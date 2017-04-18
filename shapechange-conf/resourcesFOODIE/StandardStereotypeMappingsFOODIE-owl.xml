@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stereotypeMappings xmlns="http://www.interactive-instruments.de/ShapeChange/Configuration/1.1">
+
+  <StereotypeMapping wellknown="DataType" mapsTo="http://def.isotc211.org/iso19150-2/2012/base#Datatype"/>
+  <StereotypeMapping wellknown="FeatureType" mapsTo="http://def.isotc211.org/iso19150-2/2012/base#FeatureType"/>
+  <StereotypeMapping wellknown="Type" mapsTo="http://def.isotc211.org/iso19150-2/2012/base#Interface"/>
+  <StereotypeMapping wellknown="Union" mapsTo="http://def.isotc211.org/iso19150-2/2012/base#Union"/>
+  <StereotypeMapping wellknown="CodeList" mapsTo="http://def.isotc211.org/iso19150-2/2012/base#Codelist"/>
+<!--
+  <StereotypeMapping wellknown="DataType" mapsTo="iso19150-2:Datatype"/>
+  <StereotypeMapping wellknown="FeatureType" mapsTo="iso19150-2:FeatureType"/>
+  <StereotypeMapping wellknown="Type" mapsTo="iso19150-2:Interface"/>
+  <StereotypeMapping wellknown="Union" mapsTo="iso19150-2:Union"/>
+  <StereotypeMapping wellknown="CodeList" mapsTo="iso19150-2:Codelist"/>
+-->
+</stereotypeMappings>
+

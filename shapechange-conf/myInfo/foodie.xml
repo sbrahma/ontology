@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ShapeChangeConfiguration xmlns:xi="http://www.w3.org/2001/XInclude" xmlns="http://www.interactive-instruments.de/ShapeChange/Configuration/1.1" xmlns:sc="http://www.interactive-instruments.de/ShapeChange/Configuration/1.1"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.interactive-instruments.de/ShapeChange/Configuration/1.1 http://shapechange.net/resources/schema/ShapeChangeConfiguration.xsd">
+	<input>
+		<parameter name="inputModelType" value="XMI10"/>
+		<parameter name="inputFile" value="myInfo/FoodieDataSpecificationModel(XMI10)_v4.3.2.xmi"/>
+		<parameter name="checkingConstraints" value="disabled"/>
+		<parameter name="sortedSchemaOutput" value="true"/>
+		<xi:include href="resourcesFOODIE/StandardAliases.xml"/>
+	</input>
+	<log>
+		<parameter name="reportLevel" value="INFO"/>
+		<parameter name="logFile" value="myInfo/log/log_foodie.xml"/>
+	</log>
+	<targets>
+		<TargetOwl class="de.interactive_instruments.ShapeChange.Target.Ontology.OWLISO19150" mode="enabled">
+  		<targetParameter name="outputDirectory" value="myInfo/rdfOutput"/>
+  		<targetParameter name="defaultEncodingRule" value="owltest"/>
+  		<targetParameter name="URIbase" value="http://foodie-cloud.com/model"/>
+  		<targetParameter name="source"
+    		value="FOODIE application schema, Revision 4.3.2, derived according to ISO/DIS 19150-2 with several modification using ShapeChange."/>
+  		<targetParameter name="globalProperties" value="*"/>
+  		<xi:include href="resourcesFOODIE/StandardStereotypeMappingsFOODIE-owl.xml"/>
+  		<xi:include href="resourcesFOODIE/StandardNamespacesFOODIE-owl.xml"/>
+  		<xi:include href="resourcesFOODIE/StandardMapEntriesFOODIE-owl.xml"/>
+  		<rules>
+    		<EncodingRule extends="iso19150_2014" name="owltest">
+    			<rule name="rule-owl-pkg-singleOntologyPerSchema"/> <!--ontologies will be created for selected schema, but not for all of their child packages.-->
+      		<rule name="rule-owl-all-constraints"/>  <!-- the target will create constraint definitions on properties (not for union properties) and classes --> <!--nothing changes on/off -->
+      		<rule name="rule-owl-cls-geosparql-features"/> <!-- each feature type definition gets a subClassOf declaration to the GeoSPARQL defined FeatureType class-->
+      		<rule name="rule-owl-cls-19150-2-features"/>  <!-- each feature type definition gets a subClassOf declaration to the ISO 19150-2 defined FeatureType class (which defines the according stereotype) as well as AnyFeature.-->
+      		<!-- <rule name="rule-owl-cls-codelist-external"/> code lists are not represented as part of the RDF vocabulary and where available the vocabulary or codelist tagged value is used for the rdfs:range. If not set, owl:Class is used -->
+      		<!-- <rule name="rule-owl-prop-suppress-cardinality-restrictions"/> cardinality restrictions are not included in the ontology-->
+      		<rule name="rule-owl-prop-suppress-allValuesFrom-restrictions"/>  <!-- allValuesFrom restrictions are not included in the ontology.--> <!-- NOT NECESSARY TO RESTRICT RANGE LOCALLY ON THE CLASS DEFINITION, AS IT IS THE SAME AS THE GLOBAL RANGE - REAL RANGE FOR REASONER: INTERSECTION OF LOCAL (ALLVALUESFROM) AND GLOBAL (RANGE)-->
+      		<rule name="rule-owl-prop-voidable-as-minCardinality0"/> <!--minCardinality is set to 0 for voidable properties -->
+      		<rule name="rule-owl-all-suppress-dc-source"/> <!--dc:source in not included except on the ontology subject.-->      		
+      		<rule name="rule-owl-prop-suppress-asociation-names"/> <!-- association names are not included in the ontology--> <!-- no changes in the onto, as no associations names are available-->
+      		<rule name="rule-owl-pkg-app-schema-code"/> <!--the namespace abbreviation defined for an application schema package is used for constructing the ontology name of this package as well as the filename for that ontology instead of the package name (normalized according to 19150-2owl:ontologyName). this rule only applies if rule-owl-pkg-singleOntologyPerSchema is in effect-->
+    		</EncodingRule>
+  		</rules>
+  		<!--<Namespace nsabr="af-inspire" ns="http://inspire.ec.europa.eu/schemas/af/3.0#" />-->
+  		<!--
+  		<namespaces>
+    		<Namespace location="http://example.com/ont/inspire/common" ns="http://example.com/ont/inspire/common#" nsabr="common"/>
+  		</namespaces>
+  		-->
+  		<namespaces>
+    		<Namespace location="https://git.man.poznan.pl/stash/projects/FOOD/repos/model/browse/external/baseInspire.ttl?raw" ns="http://portele.de/ont/inspire/baseInspire#" nsabr="common"/>    		
+  		</namespaces>
+  		<mapEntries>
+    		<MapEntry param="datatype" rule="owltest" targetType="xsd:string" type="LocalisedCharacterString"/>
+    		<MapEntry param="datatype" rule="owltest" targetType="xsd:string" type="PT_FreeText"/>
+    		<MapEntry param="datatype" rule="owltest" targetType="xsd:anyURI" type="URL"/>
+  		</mapEntries>
+  		<mapEntries>
+    		<MapEntry param="propertyByValueType" rule="owltest" targetType="rdfs:label" type="GeographicalName"/>
+  		</mapEntries>
+  		<mapEntries>
+    		<MapEntry param="property" rule="owltest" targetType="" type="inspireId"/>
+    		<MapEntry param="property" rule="owltest" targetType="prov:generatedAtTime" type="beginLifespanVersion"/>
+    		<MapEntry param="property" rule="owltest" targetType="prov:invalidatedAtTime" type="endLifespanVersion"/>
+    		<MapEntry param="property" rule="owltest" targetType="prov:generatedAtTime" type="beginLifeSpanVersion"/>
+    		<MapEntry param="property" rule="owltest" targetType="prov:invalidatedAtTime" type="endLifeSpanVersion"/>
+    		<MapEntry param="property" rule="owltest" targetType="common:validFrom" type="validFrom"/>
+    		<MapEntry param="property" rule="owltest" targetType="common:validTo" type="validTo"/>
+    		<MapEntry param="property" rule="owltest" targetType="geo:hasGeometry" type="geometry"/>
+    		<MapEntry param="property" rule="owltest" targetType="rdfs:label" type="label"/>
+    		<MapEntry param="property" rule="owltest" targetType="rdfs:label" type="name"/>
+    		<MapEntry param="property" rule="owltest" targetType="rdf:value" type="value"/>
+  		</mapEntries>
+  		<mapEntries>
+  			<MapEntry type="CI_ResponsibleParty" rule="owltest" targetType="iso19115-citation:ResponsibleParty" param="class"/>
+  			<MapEntry type="TM_Period" rule="owltest" targetType="iso19108:Period" param="class"/>
+  			<MapEntry type="Identifier" rule="owltest" targetType="xsd:string" param="datatype"/>
+  			<!--<MapEntry type="Identifier" rule="owltest" targetType="common:identifier" param="datatype"/>
+  			<MapEntry type="Site" rule="owltest" targetType="af-inspire:Site" param="class"/>-->
+  		</mapEntries>
+		</TargetOwl>
+	</targets>
+</ShapeChangeConfiguration>

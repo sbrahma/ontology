@@ -1,0 +1,2537 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY dct "http://purl.org/dc/terms/" >
+    <!ENTITY prov "http://www.w3.org/ns/prov#" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
+    <!ENTITY skos "http://www.w3.org/2004/02/skos/core#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY geo "http://www.opengis.net/ont/geosparql#" >
+    <!ENTITY foodie "http://foodie-cloud.com/model/foodie#" >
+    <!ENTITY common "http://portele.de/ont/inspire/baseInspire#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY af-inspire "http://inspire.ec.europa.eu/schemas/af/3.0#" >
+    <!ENTITY act-inspire "http://inspire.ec.europa.eu/schemas/act-core/3.0#" >
+    <!ENTITY iso19103 "http://def.seegrid.csiro.au/isotc211/iso19103/2005/basic#" >
+    <!ENTITY iso19109 "http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#" >
+    <!ENTITY iso19115-citation "http://def.seegrid.csiro.au/isotc211/iso19115/2003/citation#" >
+    <!ENTITY iso19150-2 "http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#" >
+    <!ENTITY iso19108 "http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.semanticweb.org/owl/owlapi/turtle#"
+     xml:base="http://www.semanticweb.org/owl/owlapi/turtle"
+     xmlns:iso19150-2="http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#"
+     xmlns:foodie="http://foodie-cloud.com/model/foodie#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:af-inspire="http://inspire.ec.europa.eu/schemas/af/3.0#"
+     xmlns:act-inspire="http://inspire.ec.europa.eu/schemas/act-core/3.0#"
+     xmlns:geo="http://www.opengis.net/ont/geosparql#"
+     xmlns:iso19109="http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#"
+     xmlns:iso19108="http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal#"
+     xmlns:common="http://portele.de/ont/inspire/baseInspire#"
+     xmlns:dct="http://purl.org/dc/terms/"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:iso19115-citation="http://def.seegrid.csiro.au/isotc211/iso19115/2003/citation#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:iso19103="http://def.seegrid.csiro.au/isotc211/iso19103/2005/basic#"
+     xmlns:prov="http://www.w3.org/ns/prov#"
+     xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <owl:Ontology rdf:about="http://foodie-cloud.com/model/foodie">
+        <rdfs:label xml:lang="en">FOODIE Ontology</rdfs:label>
+        <dc:source xml:lang="en">FOODIE application schema, Revision 4.3.2, derived according to ISO/DIS 19150-2 with several modification using ShapeChange.</dc:source>
+        <rdfs:comment>FOODIE ontology extends INSPIRE data model for Agriculture and Aquaculture Facilities theme.</rdfs:comment>
+        <dc:contributor>Tomas Reznik</dc:contributor>
+        <owl:versionInfo>4.3.2</owl:versionInfo>
+        <dc:date>2015-10-01</dc:date>
+        <dc:description>FOODIE ontology has been generated from FOODIE application schema (UML model), Revision 4.3.2, and translated into an ontology according to ISO/DIS 19150-2 with several modification using ShapeChange.</dc:description>
+        <dc:creator>Raul Palma</dc:creator>
+        <dc:contributor>Karek Charvat</dc:contributor>
+        <dc:contributor>Miguel Esbri</dc:contributor>
+        <owl:imports rdf:resource="http://www.opengis.net/ont/geosparql"/>
+        <owl:imports rdf:resource="https://git.man.poznan.pl/stash/projects/FOOD/repos/model/browse/external/baseInspire.ttl?raw"/>
+        <owl:imports rdf:resource="https://git.man.poznan.pl/stash/projects/FOOD/repos/model/browse/external/iso19103.ttl?raw"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/terms/isFormatOf -->
+
+    <owl:AnnotationProperty rdf:about="&dct;isFormatOf"/>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#inScheme -->
+
+    <owl:AnnotationProperty rdf:about="&skos;inScheme"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#alertGeometry -->
+
+    <owl:ObjectProperty rdf:about="&foodie;alertGeometry">
+        <skos:notation rdf:datatype="&xsd;NCName">alertGeometry</skos:notation>
+        <skos:prefLabel xml:lang="en">alertGeometry</skos:prefLabel>
+        <rdfs:range rdf:resource="&geo;Geometry"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#alertPlot -->
+
+    <owl:ObjectProperty rdf:about="&foodie;alertPlot">
+        <skos:notation rdf:datatype="&xsd;NCName">alertPlot</skos:notation>
+        <skos:prefLabel xml:lang="en">alertPlot</skos:prefLabel>
+        <rdfs:range rdf:resource="&foodie;Plot"/>
+        <owl:inverseOf rdf:resource="&foodie;plotAlert"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#alertSpecies -->
+
+    <owl:ObjectProperty rdf:about="&foodie;alertSpecies">
+        <skos:notation rdf:datatype="&xsd;NCName">alertSpecies</skos:notation>
+        <skos:prefLabel xml:lang="en">alertSpecies</skos:prefLabel>
+        <rdfs:range rdf:resource="&foodie;CropSpecies"/>
+        <owl:inverseOf rdf:resource="&foodie;speciesAlert"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#alertZone -->
+
+    <owl:ObjectProperty rdf:about="&foodie;alertZone">
+        <skos:notation rdf:datatype="&xsd;NCName">alertZone</skos:notation>
+        <skos:prefLabel xml:lang="en">alertZone</skos:prefLabel>
+        <rdfs:range rdf:resource="&foodie;ManagementZone"/>
+        <owl:inverseOf rdf:resource="&foodie;zoneAlert"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#applicationWidth -->
+
+    <owl:ObjectProperty rdf:about="&foodie;applicationWidth">
+        <skos:notation rdf:datatype="&xsd;NCName">applicationWidth</skos:notation>
+        <skos:prefLabel xml:lang="en">applicationWidth</skos:prefLabel>
+        <rdfs:range rdf:resource="&iso19103;Measure"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#areaDose -->
+
+    <owl:ObjectProperty rdf:about="&foodie;areaDose">
+        <skos:notation rdf:datatype="&xsd;NCName">areaDose</skos:notation>
+        <skos:prefLabel xml:lang="en">areaDose</skos:prefLabel>
+        <rdfs:range rdf:resource="&foodie;DoseUnit"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#b -->
+
+    <owl:ObjectProperty rdf:about="&foodie;b">
+        <skos:notation rdf:datatype="&xsd;NCName">B</skos:notation>
+        <skos:prefLabel xml:lang="en">B</skos:prefLabel>
+        <rdfs:range rdf:resource="&iso19103;Measure"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#caO -->
+
+    <owl:ObjectProperty rdf:about="&foodie;caO">
+        <skos:notation rdf:datatype="&xsd;NCName">CaO</skos:notation>
+        <skos:prefLabel xml:lang="en">CaO</skos:prefLabel>
+        <rdfs:range rdf:resource="&iso19103;Measure"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#campaign -->
+
+    <owl:ObjectProperty rdf:about="&foodie;campaign">
+        <skos:notation rdf:datatype="&xsd;NCName">campaign</skos:notation>
+        <skos:prefLabel xml:lang="en">campaign</skos:prefLabel>
+        <rdfs:range rdf:resource="&iso19108;Period"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#containsPlot -->
+
+    <owl:ObjectProperty rdf:about="&foodie;containsPlot">
+        <skos:notation rdf:datatype="&xsd;NCName">containsPlot</skos:notation>
+        <skos:prefLabel xml:lang="en">containsPlot</skos:prefLabel>
+        <rdfs:range rdf:resource="&foodie;Plot"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#containsZone -->
+
+    <owl:ObjectProperty rdf:about="&foodie;containsZone">
+        <skos:notation rdf:datatype="&xsd;NCName">containsZone</skos:notation>
+        <skos:prefLabel xml:lang="en">containsZone</skos:prefLabel>
+        <rdfs:range rdf:resource="&foodie;ManagementZone"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#cropArea -->
+
+    <owl:ObjectProperty rdf:about="&foodie;cropArea">
+        <skos:notation rdf:datatype="&xsd;NCName">cropArea</skos:notation>
+        <skos:prefLabel xml:lang="en">cropArea</skos:prefLabel>
+        <rdfs:range rdf:resource="&geo;Geometry"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#cropSpecies -->
+
+    <owl:ObjectProperty rdf:about="&foodie;cropSpecies">
+        <skos:notation rdf:datatype="&xsd;NCName">cropSpecies</skos:notation>
+        <skos:prefLabel xml:lang="en">cropSpecies</skos:prefLabel>
+        <rdfs:range rdf:resource="&foodie;CropType"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#cu -->
+
+    <owl:ObjectProperty rdf:about="&foodie;cu">
+        <skos:notation rdf:datatype="&xsd;NCName">Cu</skos:notation>
+        <skos:prefLabel xml:lang="en">Cu</skos:prefLabel>
+        <rdfs:range rdf:resource="&iso19103;Measure"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#evidenceParty -->
+
+    <owl:ObjectProperty rdf:about="&foodie;evidenceParty">
+        <skos:notation rdf:datatype="&xsd;NCName">evidenceParty</skos:notation>
+        <skos:prefLabel xml:lang="en">evidenceParty</skos:prefLabel>
+        <rdfs:range rdf:resource="&iso19115-citation;ResponsibleParty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#fe -->
+
+    <owl:ObjectProperty rdf:about="&foodie;fe">
+        <skos:notation rdf:datatype="&xsd;NCName">Fe</skos:notation>
+        <skos:prefLabel xml:lang="en">Fe</skos:prefLabel>
+        <rdfs:range rdf:resource="&iso19103;Measure"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#flowAdjustment -->
+
+    <owl:ObjectProperty rdf:about="&foodie;flowAdjustment">
+        <skos:notation rdf:datatype="&xsd;NCName">flowAdjustment</skos:notation>
+        <skos:prefLabel xml:lang="en">flowAdjustment</skos:prefLabel>
+        <rdfs:range rdf:resource="&iso19103;Measure"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#formOfTreatment -->
+
+    <owl:ObjectProperty rdf:about="&foodie;formOfTreatment">
+        <skos:notation rdf:datatype="&xsd;NCName">formOfTreatment</skos:notation>
+        <skos:prefLabel xml:lang="en">formOfTreatment</skos:prefLabel>
+        <rdfs:range rdf:resource="&foodie;FormOfTreatmentValue"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#ingredientAmount -->
+
+    <owl:ObjectProperty rdf:about="&foodie;ingredientAmount">
+        <skos:notation rdf:datatype="&xsd;NCName">ingredientAmount</skos:notation>
+        <skos:prefLabel xml:lang="en">ingredientAmount</skos:prefLabel>
+        <rdfs:range rdf:resource="&iso19103;Measure"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#ingredientProduct -->
+
+    <owl:ObjectProperty rdf:about="&foodie;ingredientProduct">
+        <skos:notation rdf:datatype="&xsd;NCName">ingredientProduct</skos:notation>
+        <skos:prefLabel xml:lang="en">ingredientProduct</skos:prefLabel>
+        <rdfs:range rdf:resource="&foodie;Product"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#interventionGeometry -->
+
+    <owl:ObjectProperty rdf:about="&foodie;interventionGeometry">
+        <skos:notation rdf:datatype="&xsd;NCName">interventionGeometry</skos:notation>
+        <skos:prefLabel xml:lang="en">interventionGeometry</skos:prefLabel>
+        <rdfs:range rdf:resource="&geo;Geometry"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#interventionPlot -->
+
+    <owl:ObjectProperty rdf:about="&foodie;interventionPlot">
+        <skos:notation rdf:datatype="&xsd;NCName">interventionPlot</skos:notation>
+        <skos:prefLabel xml:lang="en">interventionPlot</skos:prefLabel>
+        <rdfs:range rdf:resource="&foodie;Plot"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#interventionZone -->
+
+    <owl:ObjectProperty rdf:about="&foodie;interventionZone">
+        <skos:notation rdf:datatype="&xsd;NCName">interventionZone</skos:notation>
+        <skos:prefLabel xml:lang="en">interventionZone</skos:prefLabel>
+        <rdfs:range rdf:resource="&foodie;ManagementZone"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#k2O -->
+
+    <owl:ObjectProperty rdf:about="&foodie;k2O">
+        <skos:notation rdf:datatype="&xsd;NCName">K2O</skos:notation>
+        <skos:prefLabel xml:lang="en">K2O</skos:prefLabel>
+        <rdfs:range rdf:resource="&iso19103;Measure"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#manufacturer -->
+
+    <owl:ObjectProperty rdf:about="&foodie;manufacturer">
+        <skos:notation rdf:datatype="&xsd;NCName">manufacturer</skos:notation>
+        <skos:prefLabel xml:lang="en">manufacturer</skos:prefLabel>
+        <rdfs:range rdf:resource="&iso19115-citation;ResponsibleParty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#mgO -->
+
+    <owl:ObjectProperty rdf:about="&foodie;mgO">
+        <skos:notation rdf:datatype="&xsd;NCName">MgO</skos:notation>
+        <skos:prefLabel xml:lang="en">MgO</skos:prefLabel>
+        <rdfs:range rdf:resource="&iso19103;Measure"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#mn -->
+
+    <owl:ObjectProperty rdf:about="&foodie;mn">
+        <skos:notation rdf:datatype="&xsd;NCName">Mn</skos:notation>
+        <skos:prefLabel xml:lang="en">Mn</skos:prefLabel>
+        <rdfs:range rdf:resource="&iso19103;Measure"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#mo -->
+
+    <owl:ObjectProperty rdf:about="&foodie;mo">
+        <skos:notation rdf:datatype="&xsd;NCName">Mo</skos:notation>
+        <skos:prefLabel xml:lang="en">Mo</skos:prefLabel>
+        <rdfs:range rdf:resource="&iso19103;Measure"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#motionSpeed -->
+
+    <owl:ObjectProperty rdf:about="&foodie;motionSpeed">
+        <skos:notation rdf:datatype="&xsd;NCName">motionSpeed</skos:notation>
+        <skos:prefLabel xml:lang="en">motionSpeed</skos:prefLabel>
+        <rdfs:range rdf:resource="&iso19103;Measure"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#n -->
+
+    <owl:ObjectProperty rdf:about="&foodie;n">
+        <skos:notation rdf:datatype="&xsd;NCName">N</skos:notation>
+        <skos:prefLabel xml:lang="en">N</skos:prefLabel>
+        <rdfs:range rdf:resource="&iso19103;Measure"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#nutrient -->
+
+    <owl:ObjectProperty rdf:about="&foodie;nutrient">
+        <skos:notation rdf:datatype="&xsd;NCName">nutrient</skos:notation>
+        <skos:prefLabel xml:lang="en">nutrient</skos:prefLabel>
+        <rdfs:range rdf:resource="&foodie;ProductNutrients"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#nutrientAmount -->
+
+    <owl:ObjectProperty rdf:about="&foodie;nutrientAmount">
+        <skos:notation rdf:datatype="&xsd;NCName">nutrientAmount</skos:notation>
+        <skos:prefLabel xml:lang="en">nutrientAmount</skos:prefLabel>
+        <rdfs:range rdf:resource="&iso19103;Measure"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#operator -->
+
+    <owl:ObjectProperty rdf:about="&foodie;operator">
+        <skos:notation rdf:datatype="&xsd;NCName">operator</skos:notation>
+        <skos:prefLabel xml:lang="en">operator</skos:prefLabel>
+        <rdfs:range rdf:resource="&iso19115-citation;ResponsibleParty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#originType -->
+
+    <owl:ObjectProperty rdf:about="&foodie;originType">
+        <skos:notation rdf:datatype="&xsd;NCName">originType</skos:notation>
+        <skos:prefLabel xml:lang="en">originType</skos:prefLabel>
+        <rdfs:range rdf:resource="&foodie;OriginTypeValue"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#p2O5 -->
+
+    <owl:ObjectProperty rdf:about="&foodie;p2O5">
+        <skos:notation rdf:datatype="&xsd;NCName">P2O5</skos:notation>
+        <skos:prefLabel xml:lang="en">P2O5</skos:prefLabel>
+        <rdfs:range rdf:resource="&iso19103;Measure"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#plan -->
+
+    <owl:ObjectProperty rdf:about="&foodie;plan">
+        <skos:notation rdf:datatype="&xsd;NCName">plan</skos:notation>
+        <skos:prefLabel xml:lang="en">plan</skos:prefLabel>
+        <rdfs:range rdf:resource="&foodie;TreatmentPlan"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#planProduct -->
+
+    <owl:ObjectProperty rdf:about="&foodie;planProduct">
+        <skos:notation rdf:datatype="&xsd;NCName">planProduct</skos:notation>
+        <skos:prefLabel xml:lang="en">planProduct</skos:prefLabel>
+        <rdfs:range rdf:resource="&foodie;Product"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#plotAlert -->
+
+    <owl:ObjectProperty rdf:about="&foodie;plotAlert">
+        <skos:notation rdf:datatype="&xsd;NCName">plotAlert</skos:notation>
+        <skos:prefLabel xml:lang="en">plotAlert</skos:prefLabel>
+        <rdfs:range rdf:resource="&foodie;Alert"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#preparation -->
+
+    <owl:ObjectProperty rdf:about="&foodie;preparation">
+        <skos:notation rdf:datatype="&xsd;NCName">preparation</skos:notation>
+        <skos:prefLabel xml:lang="en">preparation</skos:prefLabel>
+        <rdfs:range rdf:resource="&foodie;ProductPreparation"/>
+        <owl:inverseOf rdf:resource="&foodie;preparationProduct"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#preparationPlan -->
+
+    <owl:ObjectProperty rdf:about="&foodie;preparationPlan">
+        <skos:notation rdf:datatype="&xsd;NCName">preparationPlan</skos:notation>
+        <skos:prefLabel xml:lang="en">preparationPlan</skos:prefLabel>
+        <rdfs:range rdf:resource="&foodie;TreatmentPlan"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#preparationProduct -->
+
+    <owl:ObjectProperty rdf:about="&foodie;preparationProduct">
+        <skos:notation rdf:datatype="&xsd;NCName">preparationProduct</skos:notation>
+        <skos:prefLabel xml:lang="en">preparationProduct</skos:prefLabel>
+        <rdfs:range rdf:resource="&foodie;Product"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#pressure -->
+
+    <owl:ObjectProperty rdf:about="&foodie;pressure">
+        <skos:notation rdf:datatype="&xsd;NCName">pressure</skos:notation>
+        <skos:prefLabel xml:lang="en">pressure</skos:prefLabel>
+        <rdfs:range rdf:resource="&iso19103;Measure"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#productKind -->
+
+    <owl:ObjectProperty rdf:about="&foodie;productKind">
+        <skos:notation rdf:datatype="&xsd;NCName">productKind</skos:notation>
+        <skos:prefLabel xml:lang="en">productKind</skos:prefLabel>
+        <rdfs:range rdf:resource="&foodie;ProductKindValue"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#productPlan -->
+
+    <owl:ObjectProperty rdf:about="&foodie;productPlan">
+        <skos:notation rdf:datatype="&xsd;NCName">productPlan</skos:notation>
+        <skos:prefLabel xml:lang="en">productPlan</skos:prefLabel>
+        <rdfs:range rdf:resource="&foodie;TreatmentPlan"/>
+        <owl:inverseOf rdf:resource="&foodie;planProduct"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#productQuantity -->
+
+    <owl:ObjectProperty rdf:about="&foodie;productQuantity">
+        <skos:notation rdf:datatype="&xsd;NCName">productQuantity</skos:notation>
+        <skos:prefLabel xml:lang="en">productQuantity</skos:prefLabel>
+        <rdfs:range rdf:resource="&iso19103;Measure"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#productTreatment -->
+
+    <owl:ObjectProperty rdf:about="&foodie;productTreatment">
+        <skos:notation rdf:datatype="&xsd;NCName">productTreatment</skos:notation>
+        <skos:prefLabel xml:lang="en">productTreatment</skos:prefLabel>
+        <rdfs:range rdf:resource="&foodie;Treatment"/>
+        <owl:inverseOf rdf:resource="&foodie;treatmentProduct"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#production -->
+
+    <owl:ObjectProperty rdf:about="&foodie;production">
+        <skos:notation rdf:datatype="&xsd;NCName">production</skos:notation>
+        <skos:prefLabel xml:lang="en">production</skos:prefLabel>
+        <rdfs:range rdf:resource="&foodie;ProductionType"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#productionAmount -->
+
+    <owl:ObjectProperty rdf:about="&foodie;productionAmount">
+        <skos:notation rdf:datatype="&xsd;NCName">productionAmount</skos:notation>
+        <skos:prefLabel xml:lang="en">productionAmount</skos:prefLabel>
+        <rdfs:range rdf:resource="&iso19103;Measure"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#productionProperty -->
+
+    <owl:ObjectProperty rdf:about="&foodie;productionProperty">
+        <skos:notation rdf:datatype="&xsd;NCName">productionProperty</skos:notation>
+        <skos:prefLabel xml:lang="en">productionProperty</skos:prefLabel>
+        <rdfs:range rdf:resource="&foodie;PropertyType"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#propertyType -->
+
+    <owl:ObjectProperty rdf:about="&foodie;propertyType">
+        <skos:notation rdf:datatype="&xsd;NCName">propertyType</skos:notation>
+        <skos:prefLabel xml:lang="en">propertyType</skos:prefLabel>
+        <rdfs:range rdf:resource="&foodie;PropertyTypeValue"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#quantitativeProperty -->
+
+    <owl:ObjectProperty rdf:about="&foodie;quantitativeProperty">
+        <skos:notation rdf:datatype="&xsd;NCName">quantitativeProperty</skos:notation>
+        <skos:prefLabel xml:lang="en">quantitativeProperty</skos:prefLabel>
+        <rdfs:range rdf:resource="&iso19103;Measure"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#quantity -->
+
+    <owl:ObjectProperty rdf:about="&foodie;quantity">
+        <skos:notation rdf:datatype="&xsd;NCName">quantity</skos:notation>
+        <skos:prefLabel xml:lang="en">quantity</skos:prefLabel>
+        <rdfs:range rdf:resource="&iso19103;Measure"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#s -->
+
+    <owl:ObjectProperty rdf:about="&foodie;s">
+        <skos:notation rdf:datatype="&xsd;NCName">S</skos:notation>
+        <skos:prefLabel xml:lang="en">S</skos:prefLabel>
+        <rdfs:range rdf:resource="&iso19103;Measure"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#safetyPeriod -->
+
+    <owl:ObjectProperty rdf:about="&foodie;safetyPeriod">
+        <skos:notation rdf:datatype="&xsd;NCName">safetyPeriod</skos:notation>
+        <skos:prefLabel xml:lang="en">safetyPeriod</skos:prefLabel>
+        <rdfs:range rdf:resource="&iso19108;Period"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#soilProperty -->
+
+    <owl:ObjectProperty rdf:about="&foodie;soilProperty">
+        <skos:notation rdf:datatype="&xsd;NCName">soilProperty</skos:notation>
+        <skos:prefLabel xml:lang="en">soilProperty</skos:prefLabel>
+        <rdfs:range rdf:resource="&foodie;PropertyType"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#solventQuantity -->
+
+    <owl:ObjectProperty rdf:about="&foodie;solventQuantity">
+        <skos:notation rdf:datatype="&xsd;NCName">solventQuantity</skos:notation>
+        <skos:prefLabel xml:lang="en">solventQuantity</skos:prefLabel>
+        <rdfs:range rdf:resource="&iso19103;Measure"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#speciesAlert -->
+
+    <owl:ObjectProperty rdf:about="&foodie;speciesAlert">
+        <skos:notation rdf:datatype="&xsd;NCName">speciesAlert</skos:notation>
+        <skos:prefLabel xml:lang="en">speciesAlert</skos:prefLabel>
+        <rdfs:range rdf:resource="&foodie;Alert"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#speciesPlot -->
+
+    <owl:ObjectProperty rdf:about="&foodie;speciesPlot">
+        <skos:notation rdf:datatype="&xsd;NCName">speciesPlot</skos:notation>
+        <skos:prefLabel xml:lang="en">speciesPlot</skos:prefLabel>
+        <rdfs:range rdf:resource="&foodie;Plot"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#supervisor -->
+
+    <owl:ObjectProperty rdf:about="&foodie;supervisor">
+        <skos:notation rdf:datatype="&xsd;NCName">supervisor</skos:notation>
+        <skos:prefLabel xml:lang="en">supervisor</skos:prefLabel>
+        <rdfs:range rdf:resource="&iso19115-citation;ResponsibleParty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#treatmentProduct -->
+
+    <owl:ObjectProperty rdf:about="&foodie;treatmentProduct">
+        <skos:notation rdf:datatype="&xsd;NCName">treatmentProduct</skos:notation>
+        <skos:prefLabel xml:lang="en">treatmentProduct</skos:prefLabel>
+        <rdfs:range rdf:resource="&foodie;Product"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#treatmentPurpose -->
+
+    <owl:ObjectProperty rdf:about="&foodie;treatmentPurpose">
+        <skos:notation rdf:datatype="&xsd;NCName">treatmentPurpose</skos:notation>
+        <skos:prefLabel xml:lang="en">treatmentPurpose</skos:prefLabel>
+        <rdfs:range rdf:resource="&foodie;TreatmentPurposeValue"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#zn -->
+
+    <owl:ObjectProperty rdf:about="&foodie;zn">
+        <skos:notation rdf:datatype="&xsd;NCName">Zn</skos:notation>
+        <skos:prefLabel xml:lang="en">Zn</skos:prefLabel>
+        <rdfs:range rdf:resource="&iso19103;Measure"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#zoneAlert -->
+
+    <owl:ObjectProperty rdf:about="&foodie;zoneAlert">
+        <skos:notation rdf:datatype="&xsd;NCName">zoneAlert</skos:notation>
+        <skos:prefLabel xml:lang="en">zoneAlert</skos:prefLabel>
+        <rdfs:range rdf:resource="&foodie;Alert"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#zoneNutrients -->
+
+    <owl:ObjectProperty rdf:about="&foodie;zoneNutrients">
+        <skos:notation rdf:datatype="&xsd;NCName">zoneNutrients</skos:notation>
+        <skos:prefLabel xml:lang="en">zoneNutrients</skos:prefLabel>
+        <rdfs:range rdf:resource="&foodie;SoilNutrients"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://inspire.ec.europa.eu/schemas/act-core/3.0#function -->
+
+    <owl:ObjectProperty rdf:about="&act-inspire;function">
+        <skos:notation rdf:datatype="&xsd;NCName">function</skos:notation>
+        <skos:prefLabel xml:lang="en">function</skos:prefLabel>
+        <rdfs:range rdf:resource="&act-inspire;Function"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://inspire.ec.europa.eu/schemas/act-core/3.0#thematicId -->
+
+    <owl:ObjectProperty rdf:about="&act-inspire;thematicId">
+        <skos:notation rdf:datatype="&xsd;NCName">thematicId</skos:notation>
+        <skos:prefLabel xml:lang="en">thematicId</skos:prefLabel>
+        <rdfs:range rdf:resource="&common;ThematicIdentifier"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://inspire.ec.europa.eu/schemas/af/3.0#activity -->
+
+    <owl:ObjectProperty rdf:about="&af-inspire;activity">
+        <skos:notation rdf:datatype="&xsd;NCName">activity</skos:notation>
+        <skos:prefLabel xml:lang="en">activity</skos:prefLabel>
+        <rdfs:range rdf:resource="&act-inspire;EconomicActivityNACEValue"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://inspire.ec.europa.eu/schemas/af/3.0#contains -->
+
+    <owl:ObjectProperty rdf:about="&af-inspire;contains">
+        <skos:notation rdf:datatype="&xsd;NCName">contains</skos:notation>
+        <skos:prefLabel xml:lang="en">contains</skos:prefLabel>
+        <rdfs:range rdf:resource="&af-inspire;Site"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#alertDate -->
+
+    <owl:DatatypeProperty rdf:about="&foodie;alertDate">
+        <skos:notation rdf:datatype="&xsd;NCName">alertDate</skos:notation>
+        <skos:prefLabel xml:lang="en">alertDate</skos:prefLabel>
+        <rdfs:range rdf:resource="&xsd;date"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#analysisDate -->
+
+    <owl:DatatypeProperty rdf:about="&foodie;analysisDate">
+        <skos:notation rdf:datatype="&xsd;NCName">analysisDate</skos:notation>
+        <skos:prefLabel xml:lang="en">analysisDate</skos:prefLabel>
+        <rdfs:range rdf:resource="&xsd;date"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#beginDate -->
+
+    <owl:DatatypeProperty rdf:about="&foodie;beginDate">
+        <skos:notation rdf:datatype="&xsd;NCName">beginDate</skos:notation>
+        <skos:prefLabel xml:lang="en">beginDate</skos:prefLabel>
+        <rdfs:range rdf:resource="&xsd;date"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#checkedByUser -->
+
+    <owl:DatatypeProperty rdf:about="&foodie;checkedByUser">
+        <skos:notation rdf:datatype="&xsd;NCName">checkedByUser</skos:notation>
+        <skos:prefLabel xml:lang="en">checkedByUser</skos:prefLabel>
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#code -->
+
+    <owl:DatatypeProperty rdf:about="&foodie;code">
+        <skos:notation rdf:datatype="&xsd;NCName">code</skos:notation>
+        <skos:prefLabel xml:lang="en">code</skos:prefLabel>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#creationDateTime -->
+
+    <owl:DatatypeProperty rdf:about="&foodie;creationDateTime">
+        <skos:notation rdf:datatype="&xsd;NCName">creationDateTime</skos:notation>
+        <skos:prefLabel xml:lang="en">creationDateTime</skos:prefLabel>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#description -->
+
+    <owl:DatatypeProperty rdf:about="&foodie;description">
+        <skos:notation rdf:datatype="&xsd;NCName">description</skos:notation>
+        <skos:prefLabel xml:lang="en">description</skos:prefLabel>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#endDate -->
+
+    <owl:DatatypeProperty rdf:about="&foodie;endDate">
+        <skos:notation rdf:datatype="&xsd;NCName">endDate</skos:notation>
+        <skos:prefLabel xml:lang="en">endDate</skos:prefLabel>
+        <rdfs:range rdf:resource="&xsd;date"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#family -->
+
+    <owl:DatatypeProperty rdf:about="&foodie;family">
+        <skos:notation rdf:datatype="&xsd;NCName">family</skos:notation>
+        <skos:prefLabel xml:lang="en">family</skos:prefLabel>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#genus -->
+
+    <owl:DatatypeProperty rdf:about="&foodie;genus">
+        <skos:notation rdf:datatype="&xsd;NCName">genus</skos:notation>
+        <skos:prefLabel xml:lang="en">genus</skos:prefLabel>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#ingredientName -->
+
+    <owl:DatatypeProperty rdf:about="&foodie;ingredientName">
+        <skos:notation rdf:datatype="&xsd;NCName">ingredientName</skos:notation>
+        <skos:prefLabel xml:lang="en">ingredientName</skos:prefLabel>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#interventionEnd -->
+
+    <owl:DatatypeProperty rdf:about="&foodie;interventionEnd">
+        <skos:notation rdf:datatype="&xsd;NCName">interventionEnd</skos:notation>
+        <skos:prefLabel xml:lang="en">interventionEnd</skos:prefLabel>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#interventionStart -->
+
+    <owl:DatatypeProperty rdf:about="&foodie;interventionStart">
+        <skos:notation rdf:datatype="&xsd;NCName">interventionStart</skos:notation>
+        <skos:prefLabel xml:lang="en">interventionStart</skos:prefLabel>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#machineId -->
+
+    <owl:DatatypeProperty rdf:about="&foodie;machineId">
+        <skos:notation rdf:datatype="&xsd;NCName">machineId</skos:notation>
+        <skos:prefLabel xml:lang="en">machineId</skos:prefLabel>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#nonQuantitativeProperty -->
+
+    <owl:DatatypeProperty rdf:about="&foodie;nonQuantitativeProperty">
+        <skos:notation rdf:datatype="&xsd;NCName">nonQuantitativeProperty</skos:notation>
+        <skos:prefLabel xml:lang="en">nonQuantitativeProperty</skos:prefLabel>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#notes -->
+
+    <owl:DatatypeProperty rdf:about="&foodie;notes">
+        <skos:notation rdf:datatype="&xsd;NCName">notes</skos:notation>
+        <skos:prefLabel xml:lang="en">notes</skos:prefLabel>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#nutrientMeasure -->
+
+    <owl:DatatypeProperty rdf:about="&foodie;nutrientMeasure">
+        <skos:notation rdf:datatype="&xsd;NCName">nutrientMeasure</skos:notation>
+        <skos:prefLabel xml:lang="en">nutrientMeasure</skos:prefLabel>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#nutrientName -->
+
+    <owl:DatatypeProperty rdf:about="&foodie;nutrientName">
+        <skos:notation rdf:datatype="&xsd;NCName">nutrientName</skos:notation>
+        <skos:prefLabel xml:lang="en">nutrientName</skos:prefLabel>
+        <rdfs:range rdf:resource="&xsd;Name"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#price -->
+
+    <owl:DatatypeProperty rdf:about="&foodie;price">
+        <skos:notation rdf:datatype="&xsd;NCName">price</skos:notation>
+        <skos:prefLabel xml:lang="en">price</skos:prefLabel>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#productCode -->
+
+    <owl:DatatypeProperty rdf:about="&foodie;productCode">
+        <skos:notation rdf:datatype="&xsd;NCName">productCode</skos:notation>
+        <skos:prefLabel xml:lang="en">productCode</skos:prefLabel>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#productName -->
+
+    <owl:DatatypeProperty rdf:about="&foodie;productName">
+        <skos:notation rdf:datatype="&xsd;NCName">productName</skos:notation>
+        <skos:prefLabel xml:lang="en">productName</skos:prefLabel>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#productSubType -->
+
+    <owl:DatatypeProperty rdf:about="&foodie;productSubType">
+        <skos:notation rdf:datatype="&xsd;NCName">productSubType</skos:notation>
+        <skos:prefLabel xml:lang="en">productSubType</skos:prefLabel>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#productType -->
+
+    <owl:DatatypeProperty rdf:about="&foodie;productType">
+        <skos:notation rdf:datatype="&xsd;NCName">productType</skos:notation>
+        <skos:prefLabel xml:lang="en">productType</skos:prefLabel>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#productionDate -->
+
+    <owl:DatatypeProperty rdf:about="&foodie;productionDate">
+        <skos:notation rdf:datatype="&xsd;NCName">productionDate</skos:notation>
+        <skos:prefLabel xml:lang="en">productionDate</skos:prefLabel>
+        <rdfs:range rdf:resource="&xsd;date"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#propertyName -->
+
+    <owl:DatatypeProperty rdf:about="&foodie;propertyName">
+        <skos:notation rdf:datatype="&xsd;NCName">propertyName</skos:notation>
+        <skos:prefLabel xml:lang="en">propertyName</skos:prefLabel>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#registerUrl -->
+
+    <owl:DatatypeProperty rdf:about="&foodie;registerUrl">
+        <skos:notation rdf:datatype="&xsd;NCName">registerUrl</skos:notation>
+        <skos:prefLabel xml:lang="en">registerUrl</skos:prefLabel>
+        <rdfs:range rdf:resource="&xsd;anyURI"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#registrationCode -->
+
+    <owl:DatatypeProperty rdf:about="&foodie;registrationCode">
+        <skos:notation rdf:datatype="&xsd;NCName">registrationCode</skos:notation>
+        <skos:prefLabel xml:lang="en">registrationCode</skos:prefLabel>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#safetyInstructions -->
+
+    <owl:DatatypeProperty rdf:about="&foodie;safetyInstructions">
+        <skos:notation rdf:datatype="&xsd;NCName">safetyInstructions</skos:notation>
+        <skos:prefLabel xml:lang="en">safetyInstructions</skos:prefLabel>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#species -->
+
+    <owl:DatatypeProperty rdf:about="&foodie;species">
+        <skos:notation rdf:datatype="&xsd;NCName">species</skos:notation>
+        <skos:prefLabel xml:lang="en">species</skos:prefLabel>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#status -->
+
+    <owl:DatatypeProperty rdf:about="&foodie;status">
+        <skos:notation rdf:datatype="&xsd;NCName">status</skos:notation>
+        <skos:prefLabel xml:lang="en">status</skos:prefLabel>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#storageHandling -->
+
+    <owl:DatatypeProperty rdf:about="&foodie;storageHandling">
+        <skos:notation rdf:datatype="&xsd;NCName">storageHandling</skos:notation>
+        <skos:prefLabel xml:lang="en">storageHandling</skos:prefLabel>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#tractorId -->
+
+    <owl:DatatypeProperty rdf:about="&foodie;tractorId">
+        <skos:notation rdf:datatype="&xsd;NCName">tractorId</skos:notation>
+        <skos:prefLabel xml:lang="en">tractorId</skos:prefLabel>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#treatmentDescription -->
+
+    <owl:DatatypeProperty rdf:about="&foodie;treatmentDescription">
+        <skos:notation rdf:datatype="&xsd;NCName">treatmentDescription</skos:notation>
+        <skos:prefLabel xml:lang="en">treatmentDescription</skos:prefLabel>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#treatmentPlanCode -->
+
+    <owl:DatatypeProperty rdf:about="&foodie;treatmentPlanCode">
+        <skos:notation rdf:datatype="&xsd;NCName">treatmentPlanCode</skos:notation>
+        <skos:prefLabel xml:lang="en">treatmentPlanCode</skos:prefLabel>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#treatmentPlanCreation -->
+
+    <owl:DatatypeProperty rdf:about="&foodie;treatmentPlanCreation">
+        <skos:notation rdf:datatype="&xsd;NCName">treatmentPlanCreation</skos:notation>
+        <skos:prefLabel xml:lang="en">treatmentPlanCreation</skos:prefLabel>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#type -->
+
+    <owl:DatatypeProperty rdf:about="&foodie;type">
+        <skos:notation rdf:datatype="&xsd;NCName">type</skos:notation>
+        <skos:prefLabel xml:lang="en">type</skos:prefLabel>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#variety -->
+
+    <owl:DatatypeProperty rdf:about="&foodie;variety">
+        <skos:notation rdf:datatype="&xsd;NCName">variety</skos:notation>
+        <skos:prefLabel xml:lang="en">variety</skos:prefLabel>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://inspire.ec.europa.eu/schemas/act-core/3.0#userId -->
+
+    <owl:DatatypeProperty rdf:about="&act-inspire;userId">
+        <skos:notation rdf:datatype="&xsd;NCName">userId</skos:notation>
+        <skos:prefLabel xml:lang="en">userId</skos:prefLabel>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/ns/prov#generatedAtTime -->
+
+    <owl:DatatypeProperty rdf:about="&prov;generatedAtTime">
+        <rdfs:label>generatedAtTime</rdfs:label>
+        <rdfs:comment xml:lang="en">The time at which an entity was completely created and is available for use.</rdfs:comment>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
+        <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/prov-o#"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/ns/prov#invalidatedAtTime -->
+
+    <owl:DatatypeProperty rdf:about="&prov;invalidatedAtTime">
+        <rdfs:label>invalidatedAtTime</rdfs:label>
+        <rdfs:comment xml:lang="en">The time at which an entity was invalidated (i.e., no longer usable).</rdfs:comment>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
+        <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/prov-o#"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal#Period -->
+
+    <owl:Class rdf:about="&iso19108;Period"/>
+    
+
+
+    <!-- http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#AnyFeature -->
+
+    <owl:Class rdf:about="&iso19109;AnyFeature"/>
+    
+
+
+    <!-- http://def.seegrid.csiro.au/isotc211/iso19115/2003/citation#ResponsibleParty -->
+
+    <owl:Class rdf:about="&iso19115-citation;ResponsibleParty"/>
+    
+
+
+    <!-- http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#Codelist -->
+
+    <owl:Class rdf:about="&iso19150-2;Codelist"/>
+    
+
+
+    <!-- http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#FeatureType -->
+
+    <owl:Class rdf:about="&iso19150-2;FeatureType"/>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#ActiveIngredients -->
+
+    <owl:Class rdf:about="&foodie;ActiveIngredients">
+        <rdfs:subClassOf rdf:resource="&iso19150-2;Datatype"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;ingredientName"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;code"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;ingredientAmount"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <skos:notation rdf:datatype="&xsd;NCName">ActiveIngredients</skos:notation>
+        <skos:prefLabel xml:lang="en">ActiveIngredients</skos:prefLabel>
+    </owl:Class>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#Alert -->
+
+    <owl:Class rdf:about="&foodie;Alert">
+        <rdfs:subClassOf rdf:resource="&iso19109;AnyFeature"/>
+        <rdfs:subClassOf rdf:resource="&iso19150-2;FeatureType"/>
+        <rdfs:subClassOf rdf:resource="&geo;Feature"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;type"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;alertGeometry"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;description"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;code"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;alertDate"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;checkedByUser"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <skos:notation rdf:datatype="&xsd;NCName">Alert</skos:notation>
+        <skos:prefLabel xml:lang="en">Alert</skos:prefLabel>
+    </owl:Class>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#CropSpecies -->
+
+    <owl:Class rdf:about="&foodie;CropSpecies">
+        <rdfs:subClassOf rdf:resource="&iso19109;AnyFeature"/>
+        <rdfs:subClassOf rdf:resource="&iso19150-2;FeatureType"/>
+        <rdfs:subClassOf rdf:resource="&geo;Feature"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;cropSpecies"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;endDate"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;cropArea"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;beginDate"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <skos:notation rdf:datatype="&xsd;NCName">CropSpecies</skos:notation>
+        <skos:prefLabel xml:lang="en">CropSpecies</skos:prefLabel>
+    </owl:Class>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#CropType -->
+
+    <owl:Class rdf:about="&foodie;CropType">
+        <rdfs:subClassOf rdf:resource="&iso19150-2;Datatype"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;genus"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;code"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;family"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;description"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;species"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;variety"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;notes"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <skos:notation rdf:datatype="&xsd;NCName">CropType</skos:notation>
+        <skos:prefLabel xml:lang="en">CropType</skos:prefLabel>
+    </owl:Class>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#DoseUnit -->
+
+    <owl:Class rdf:about="&foodie;DoseUnit">
+        <rdfs:subClassOf rdf:resource="&iso19150-2;Codelist"/>
+        <rdfs:subClassOf rdf:resource="&skos;Concept"/>
+        <skos:notation rdf:datatype="&xsd;NCName">DoseUnit</skos:notation>
+        <skos:prefLabel xml:lang="en">DoseUnit</skos:prefLabel>
+    </owl:Class>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#FormOfTreatmentValue -->
+
+    <owl:Class rdf:about="&foodie;FormOfTreatmentValue">
+        <rdfs:subClassOf rdf:resource="&iso19150-2;Codelist"/>
+        <rdfs:subClassOf rdf:resource="&skos;Concept"/>
+        <skos:notation rdf:datatype="&xsd;NCName">FormOfTreatmentValue</skos:notation>
+        <skos:prefLabel xml:lang="en">FormOfTreatmentValue</skos:prefLabel>
+    </owl:Class>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#Intervention -->
+
+    <owl:Class rdf:about="&foodie;Intervention">
+        <rdfs:subClassOf rdf:resource="&iso19109;AnyFeature"/>
+        <rdfs:subClassOf rdf:resource="&iso19150-2;FeatureType"/>
+        <rdfs:subClassOf rdf:resource="&geo;Feature"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;notes"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;status"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;interventionPlot"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;creationDateTime"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;supervisor"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;price"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;interventionStart"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;type"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;interventionEnd"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;description"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;evidenceParty"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;interventionGeometry"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <skos:notation rdf:datatype="&xsd;NCName">Intervention</skos:notation>
+        <skos:prefLabel xml:lang="en">Intervention</skos:prefLabel>
+    </owl:Class>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#ManagementZone -->
+
+    <owl:Class rdf:about="&foodie;ManagementZone">
+        <rdfs:subClassOf rdf:resource="&iso19109;AnyFeature"/>
+        <rdfs:subClassOf rdf:resource="&iso19150-2;FeatureType"/>
+        <rdfs:subClassOf rdf:resource="&geo;Feature"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&prov;generatedAtTime"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&prov;invalidatedAtTime"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geo;hasGeometry"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;notes"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&common;validFrom"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&common;validTo"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;code"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <skos:notation rdf:datatype="&xsd;NCName">ManagementZone</skos:notation>
+        <skos:prefLabel xml:lang="en">ManagementZone</skos:prefLabel>
+    </owl:Class>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#NutrientsType -->
+
+    <owl:Class rdf:about="&foodie;NutrientsType">
+        <rdfs:subClassOf rdf:resource="&iso19150-2;Datatype"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;zn"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;p2O5"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;mo"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;cu"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;n"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;caO"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;fe"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;k2O"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;mgO"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;s"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;b"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;mn"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <skos:notation rdf:datatype="&xsd;NCName">NutrientsType</skos:notation>
+        <skos:prefLabel xml:lang="en">NutrientsType</skos:prefLabel>
+    </owl:Class>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#OriginTypeValue -->
+
+    <owl:Class rdf:about="&foodie;OriginTypeValue">
+        <rdfs:subClassOf rdf:resource="&iso19150-2;Codelist"/>
+        <rdfs:subClassOf rdf:resource="&skos;Concept"/>
+        <skos:notation rdf:datatype="&xsd;NCName">OriginTypeValue</skos:notation>
+        <skos:prefLabel xml:lang="en">OriginTypeValue</skos:prefLabel>
+    </owl:Class>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#Plot -->
+
+    <owl:Class rdf:about="&foodie;Plot">
+        <rdfs:subClassOf rdf:resource="&iso19109;AnyFeature"/>
+        <rdfs:subClassOf rdf:resource="&iso19150-2;FeatureType"/>
+        <rdfs:subClassOf rdf:resource="&geo;Feature"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&common;validFrom"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;code"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;originType"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&prov;generatedAtTime"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;description"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&common;validTo"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geo;hasGeometry"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&prov;invalidatedAtTime"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <skos:notation rdf:datatype="&xsd;NCName">Plot</skos:notation>
+        <skos:prefLabel xml:lang="en">Plot</skos:prefLabel>
+    </owl:Class>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#Product -->
+
+    <owl:Class rdf:about="&foodie;Product">
+        <rdfs:subClassOf rdf:resource="&iso19109;AnyFeature"/>
+        <rdfs:subClassOf rdf:resource="&iso19150-2;FeatureType"/>
+        <rdfs:subClassOf rdf:resource="&geo;Feature"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;storageHandling"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;productName"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;manufacturer"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;safetyInstructions"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;preparation"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;description"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;price"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;productKind"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;productType"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <skos:notation rdf:datatype="&xsd;NCName">Product</skos:notation>
+        <skos:prefLabel xml:lang="en">Product</skos:prefLabel>
+    </owl:Class>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#ProductKindValue -->
+
+    <owl:Class rdf:about="&foodie;ProductKindValue">
+        <rdfs:subClassOf rdf:resource="&iso19150-2;Codelist"/>
+        <rdfs:subClassOf rdf:resource="&skos;Concept"/>
+        <skos:notation rdf:datatype="&xsd;NCName">ProductKindValue</skos:notation>
+        <skos:prefLabel xml:lang="en">ProductKindValue</skos:prefLabel>
+    </owl:Class>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#ProductNutrients -->
+
+    <owl:Class rdf:about="&foodie;ProductNutrients">
+        <rdfs:subClassOf rdf:resource="&iso19109;AnyFeature"/>
+        <rdfs:subClassOf rdf:resource="&iso19150-2;FeatureType"/>
+        <rdfs:subClassOf rdf:resource="&geo;Feature"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;nutrientName"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;nutrientMeasure"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;nutrientAmount"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <skos:notation rdf:datatype="&xsd;NCName">ProductNutrients</skos:notation>
+        <skos:prefLabel xml:lang="en">ProductNutrients</skos:prefLabel>
+    </owl:Class>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#ProductPreparation -->
+
+    <owl:Class rdf:about="&foodie;ProductPreparation">
+        <rdfs:subClassOf rdf:resource="&iso19109;AnyFeature"/>
+        <rdfs:subClassOf rdf:resource="&iso19150-2;FeatureType"/>
+        <rdfs:subClassOf rdf:resource="&geo;Feature"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;safetyPeriod"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;productQuantity"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;solventQuantity"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <skos:notation rdf:datatype="&xsd;NCName">ProductPreparation</skos:notation>
+        <skos:prefLabel xml:lang="en">ProductPreparation</skos:prefLabel>
+    </owl:Class>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#ProductionType -->
+
+    <owl:Class rdf:about="&foodie;ProductionType">
+        <rdfs:subClassOf rdf:resource="&iso19150-2;Datatype"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;productionDate"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;variety"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;productionAmount"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <skos:notation rdf:datatype="&xsd;NCName">ProductionType</skos:notation>
+        <skos:prefLabel xml:lang="en">ProductionType</skos:prefLabel>
+    </owl:Class>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#PropertyType -->
+
+    <owl:Class rdf:about="&foodie;PropertyType">
+        <rdfs:subClassOf rdf:resource="&iso19150-2;Datatype"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;propertyName"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;nonQuantitativeProperty"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;analysisDate"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;quantitativeProperty"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;propertyType"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <skos:notation rdf:datatype="&xsd;NCName">PropertyType</skos:notation>
+        <skos:prefLabel xml:lang="en">PropertyType</skos:prefLabel>
+    </owl:Class>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#PropertyTypeValue -->
+
+    <owl:Class rdf:about="&foodie;PropertyTypeValue">
+        <rdfs:subClassOf rdf:resource="&iso19150-2;Codelist"/>
+        <rdfs:subClassOf rdf:resource="&skos;Concept"/>
+        <skos:notation rdf:datatype="&xsd;NCName">PropertyTypeValue</skos:notation>
+        <skos:prefLabel xml:lang="en">PropertyTypeValue</skos:prefLabel>
+    </owl:Class>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#SoilNutrients -->
+
+    <owl:Class rdf:about="&foodie;SoilNutrients">
+        <rdfs:subClassOf rdf:resource="&iso19109;AnyFeature"/>
+        <rdfs:subClassOf rdf:resource="&iso19150-2;FeatureType"/>
+        <rdfs:subClassOf rdf:resource="&geo;Feature"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;nutrientName"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;nutrientAmount"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;nutrientMeasure"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <skos:notation rdf:datatype="&xsd;NCName">SoilNutrients</skos:notation>
+        <skos:prefLabel xml:lang="en">SoilNutrients</skos:prefLabel>
+    </owl:Class>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#Treatment -->
+
+    <owl:Class rdf:about="&foodie;Treatment">
+        <rdfs:subClassOf rdf:resource="&iso19109;AnyFeature"/>
+        <rdfs:subClassOf rdf:resource="&iso19150-2;FeatureType"/>
+        <rdfs:subClassOf rdf:resource="&foodie;Intervention"/>
+        <rdfs:subClassOf rdf:resource="&geo;Feature"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;quantity"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;formOfTreatment"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;areaDose"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;flowAdjustment"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;treatmentProduct"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;plan"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;treatmentDescription"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;applicationWidth"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;motionSpeed"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;pressure"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;price"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <skos:notation rdf:datatype="&xsd;NCName">Treatment</skos:notation>
+        <skos:prefLabel xml:lang="en">Treatment</skos:prefLabel>
+    </owl:Class>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#TreatmentPlan -->
+
+    <owl:Class rdf:about="&foodie;TreatmentPlan">
+        <rdfs:subClassOf rdf:resource="&iso19109;AnyFeature"/>
+        <rdfs:subClassOf rdf:resource="&iso19150-2;FeatureType"/>
+        <rdfs:subClassOf rdf:resource="&geo;Feature"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;treatmentPlanCreation"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;type"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;notes"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;campaign"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;planProduct"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;description"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;treatmentPlanCode"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <skos:notation rdf:datatype="&xsd;NCName">TreatmentPlan</skos:notation>
+        <skos:prefLabel xml:lang="en">TreatmentPlan</skos:prefLabel>
+    </owl:Class>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie#TreatmentPurposeValue -->
+
+    <owl:Class rdf:about="&foodie;TreatmentPurposeValue">
+        <rdfs:subClassOf rdf:resource="&iso19150-2;Codelist"/>
+        <rdfs:subClassOf rdf:resource="&skos;Concept"/>
+        <skos:notation rdf:datatype="&xsd;NCName">TreatmentPurposeValue</skos:notation>
+        <skos:prefLabel xml:lang="en">TreatmentPurposeValue</skos:prefLabel>
+    </owl:Class>
+    
+
+
+    <!-- http://inspire.ec.europa.eu/schemas/act-core/3.0#ActivityComplex -->
+
+    <owl:Class rdf:about="&act-inspire;ActivityComplex">
+        <rdfs:subClassOf rdf:resource="&iso19109;AnyFeature"/>
+        <rdfs:subClassOf rdf:resource="&iso19150-2;FeatureType"/>
+        <rdfs:subClassOf rdf:resource="&geo;Feature"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&common;validTo"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&common;validFrom"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&prov;generatedAtTime"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&prov;invalidatedAtTime"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&act-inspire;function"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&act-inspire;userId"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geo;hasGeometry"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <skos:notation rdf:datatype="&xsd;NCName">ActivityComplex</skos:notation>
+        <skos:prefLabel xml:lang="en">ActivityComplex</skos:prefLabel>
+    </owl:Class>
+    
+
+
+    <!-- http://inspire.ec.europa.eu/schemas/act-core/3.0#EconomicActivityNACEValue -->
+
+    <owl:Class rdf:about="&act-inspire;EconomicActivityNACEValue">
+        <rdfs:subClassOf rdf:resource="&iso19150-2;Codelist"/>
+        <rdfs:subClassOf rdf:resource="&skos;Concept"/>
+        <skos:notation rdf:datatype="&xsd;NCName">EconomicActivityNACEValue</skos:notation>
+        <skos:prefLabel xml:lang="en">EconomicActivityNACEValue</skos:prefLabel>
+    </owl:Class>
+    
+
+
+    <!-- http://inspire.ec.europa.eu/schemas/act-core/3.0#Function -->
+
+    <owl:Class rdf:about="&act-inspire;Function">
+        <rdfs:subClassOf rdf:resource="&iso19150-2;Datatype"/>
+        <skos:notation rdf:datatype="&xsd;NCName">Function</skos:notation>
+        <skos:prefLabel xml:lang="en">Function</skos:prefLabel>
+    </owl:Class>
+    
+
+
+    <!-- http://inspire.ec.europa.eu/schemas/af/3.0#Holding -->
+
+    <owl:Class rdf:about="&af-inspire;Holding">
+        <rdfs:subClassOf rdf:resource="&iso19109;AnyFeature"/>
+        <rdfs:subClassOf rdf:resource="&iso19150-2;FeatureType"/>
+        <rdfs:subClassOf rdf:resource="&act-inspire;ActivityComplex"/>
+        <rdfs:subClassOf rdf:resource="&geo;Feature"/>
+        <skos:notation rdf:datatype="&xsd;NCName">Holding</skos:notation>
+        <skos:prefLabel xml:lang="en">Holding</skos:prefLabel>
+    </owl:Class>
+    
+
+
+    <!-- http://inspire.ec.europa.eu/schemas/af/3.0#Site -->
+
+    <owl:Class rdf:about="&af-inspire;Site">
+        <rdfs:subClassOf rdf:resource="&iso19109;AnyFeature"/>
+        <rdfs:subClassOf rdf:resource="&iso19150-2;FeatureType"/>
+        <rdfs:subClassOf rdf:resource="&geo;Feature"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&prov;invalidatedAtTime"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&common;validTo"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&foodie;code"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&prov;generatedAtTime"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&af-inspire;activity"/>
+                <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geo;hasGeometry"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&common;validFrom"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <skos:notation rdf:datatype="&xsd;NCName">Site</skos:notation>
+        <skos:prefLabel xml:lang="en">Site</skos:prefLabel>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie/code/DoseUnit -->
+
+    <owl:NamedIndividual rdf:about="http://foodie-cloud.com/model/foodie/code/DoseUnit">
+        <rdf:type rdf:resource="&skos;ConceptScheme"/>
+        <skos:notation rdf:datatype="&xsd;NCName">DoseUnit</skos:notation>
+        <dct:isFormatOf>http://foodie-cloud.com/model/foodie#DoseUnit</dct:isFormatOf>
+        <skos:prefLabel xml:lang="en">DoseUnit</skos:prefLabel>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie/code/FormOfTreatmentValue -->
+
+    <owl:NamedIndividual rdf:about="http://foodie-cloud.com/model/foodie/code/FormOfTreatmentValue">
+        <rdf:type rdf:resource="&skos;ConceptScheme"/>
+        <skos:notation rdf:datatype="&xsd;NCName">FormOfTreatmentValue</skos:notation>
+        <skos:prefLabel xml:lang="en">FormOfTreatmentValue</skos:prefLabel>
+        <dct:isFormatOf>http://foodie-cloud.com/model/foodie#FormOfTreatmentValue</dct:isFormatOf>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie/code/OriginTypeValue -->
+
+    <owl:NamedIndividual rdf:about="http://foodie-cloud.com/model/foodie/code/OriginTypeValue">
+        <rdf:type rdf:resource="&skos;ConceptScheme"/>
+        <skos:notation rdf:datatype="&xsd;NCName">OriginTypeValue</skos:notation>
+        <dct:isFormatOf>http://foodie-cloud.com/model/foodie#OriginTypeValue</dct:isFormatOf>
+        <skos:prefLabel xml:lang="en">OriginTypeValue</skos:prefLabel>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie/code/ProductKindValue -->
+
+    <owl:NamedIndividual rdf:about="http://foodie-cloud.com/model/foodie/code/ProductKindValue">
+        <rdf:type rdf:resource="&skos;ConceptScheme"/>
+        <skos:notation rdf:datatype="&xsd;NCName">ProductKindValue</skos:notation>
+        <skos:prefLabel xml:lang="en">ProductKindValue</skos:prefLabel>
+        <dct:isFormatOf>http://foodie-cloud.com/model/foodie#ProductKindValue</dct:isFormatOf>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie/code/PropertyTypeValue -->
+
+    <owl:NamedIndividual rdf:about="http://foodie-cloud.com/model/foodie/code/PropertyTypeValue">
+        <rdf:type rdf:resource="&skos;ConceptScheme"/>
+        <skos:notation rdf:datatype="&xsd;NCName">PropertyTypeValue</skos:notation>
+        <dct:isFormatOf>http://foodie-cloud.com/model/foodie#PropertyTypeValue</dct:isFormatOf>
+        <skos:prefLabel xml:lang="en">PropertyTypeValue</skos:prefLabel>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie/code/TreatmentPurposeValue -->
+
+    <owl:NamedIndividual rdf:about="http://foodie-cloud.com/model/foodie/code/TreatmentPurposeValue">
+        <rdf:type rdf:resource="&skos;ConceptScheme"/>
+        <skos:notation rdf:datatype="&xsd;NCName">TreatmentPurposeValue</skos:notation>
+        <dct:isFormatOf>http://foodie-cloud.com/model/foodie#TreatmentPurposeValue</dct:isFormatOf>
+        <skos:prefLabel xml:lang="en">TreatmentPurposeValue</skos:prefLabel>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie/code/DoseUnit/maximumDose -->
+
+    <owl:NamedIndividual rdf:about="http://foodie-cloud.com/model/foodie/code/DoseUnit/maximumDose">
+        <rdf:type rdf:resource="&skos;Concept"/>
+        <skos:notation rdf:datatype="&xsd;NCName">maximumDose</skos:notation>
+        <skos:inScheme>http://foodie-cloud.com/model/foodie/code/DoseUnit</skos:inScheme>
+        <skos:prefLabel xml:lang="en">maximumDose</skos:prefLabel>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie/code/DoseUnit/minimumDose -->
+
+    <owl:NamedIndividual rdf:about="http://foodie-cloud.com/model/foodie/code/DoseUnit/minimumDose">
+        <rdf:type rdf:resource="&skos;Concept"/>
+        <skos:notation rdf:datatype="&xsd;NCName">minimumDose</skos:notation>
+        <skos:inScheme>http://foodie-cloud.com/model/foodie/code/DoseUnit</skos:inScheme>
+        <skos:prefLabel xml:lang="en">minimumDose</skos:prefLabel>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie/code/FormOfTreatmentValue/aerial -->
+
+    <owl:NamedIndividual rdf:about="http://foodie-cloud.com/model/foodie/code/FormOfTreatmentValue/aerial">
+        <rdf:type rdf:resource="&skos;Concept"/>
+        <skos:notation rdf:datatype="&xsd;NCName">aerial</skos:notation>
+        <skos:prefLabel xml:lang="en">aerial</skos:prefLabel>
+        <skos:inScheme>http://foodie-cloud.com/model/foodie/code/FormOfTreatmentValue</skos:inScheme>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie/code/FormOfTreatmentValue/applicationMachine -->
+
+    <owl:NamedIndividual rdf:about="http://foodie-cloud.com/model/foodie/code/FormOfTreatmentValue/applicationMachine">
+        <rdf:type rdf:resource="&skos;Concept"/>
+        <skos:notation rdf:datatype="&xsd;NCName">applicationMachine</skos:notation>
+        <skos:prefLabel xml:lang="en">applicationMachine</skos:prefLabel>
+        <skos:inScheme>http://foodie-cloud.com/model/foodie/code/FormOfTreatmentValue</skos:inScheme>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie/code/FormOfTreatmentValue/manual -->
+
+    <owl:NamedIndividual rdf:about="http://foodie-cloud.com/model/foodie/code/FormOfTreatmentValue/manual">
+        <rdf:type rdf:resource="&skos;Concept"/>
+        <skos:notation rdf:datatype="&xsd;NCName">manual</skos:notation>
+        <skos:inScheme>http://foodie-cloud.com/model/foodie/code/FormOfTreatmentValue</skos:inScheme>
+        <skos:prefLabel xml:lang="en">manual</skos:prefLabel>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie/code/OriginTypeValue/manual -->
+
+    <owl:NamedIndividual rdf:about="http://foodie-cloud.com/model/foodie/code/OriginTypeValue/manual">
+        <rdf:type rdf:resource="&skos;Concept"/>
+        <skos:notation rdf:datatype="&xsd;NCName">manual</skos:notation>
+        <skos:inScheme>http://foodie-cloud.com/model/foodie/code/OriginTypeValue</skos:inScheme>
+        <skos:prefLabel xml:lang="en">manual</skos:prefLabel>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie/code/OriginTypeValue/system -->
+
+    <owl:NamedIndividual rdf:about="http://foodie-cloud.com/model/foodie/code/OriginTypeValue/system">
+        <rdf:type rdf:resource="&skos;Concept"/>
+        <skos:notation rdf:datatype="&xsd;NCName">system</skos:notation>
+        <skos:inScheme>http://foodie-cloud.com/model/foodie/code/OriginTypeValue</skos:inScheme>
+        <skos:prefLabel xml:lang="en">system</skos:prefLabel>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie/code/ProductKindValue/mineral -->
+
+    <owl:NamedIndividual rdf:about="http://foodie-cloud.com/model/foodie/code/ProductKindValue/mineral">
+        <rdf:type rdf:resource="&skos;Concept"/>
+        <skos:notation rdf:datatype="&xsd;NCName">mineral</skos:notation>
+        <skos:inScheme>http://foodie-cloud.com/model/foodie/code/ProductKindValue</skos:inScheme>
+        <skos:prefLabel xml:lang="en">mineral</skos:prefLabel>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie/code/ProductKindValue/organic -->
+
+    <owl:NamedIndividual rdf:about="http://foodie-cloud.com/model/foodie/code/ProductKindValue/organic">
+        <rdf:type rdf:resource="&skos;Concept"/>
+        <skos:notation rdf:datatype="&xsd;NCName">organic</skos:notation>
+        <skos:inScheme>http://foodie-cloud.com/model/foodie/code/ProductKindValue</skos:inScheme>
+        <skos:prefLabel xml:lang="en">organic</skos:prefLabel>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie/code/PropertyTypeValue/electricConductivity -->
+
+    <owl:NamedIndividual rdf:about="http://foodie-cloud.com/model/foodie/code/PropertyTypeValue/electricConductivity">
+        <rdf:type rdf:resource="&skos;Concept"/>
+        <skos:notation rdf:datatype="&xsd;NCName">electricConductivity</skos:notation>
+        <skos:inScheme>http://foodie-cloud.com/model/foodie/code/PropertyTypeValue</skos:inScheme>
+        <skos:prefLabel xml:lang="en">electricConductivity</skos:prefLabel>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie/code/PropertyTypeValue/organicMatter -->
+
+    <owl:NamedIndividual rdf:about="http://foodie-cloud.com/model/foodie/code/PropertyTypeValue/organicMatter">
+        <rdf:type rdf:resource="&skos;Concept"/>
+        <skos:notation rdf:datatype="&xsd;NCName">organicMatter</skos:notation>
+        <skos:inScheme>http://foodie-cloud.com/model/foodie/code/PropertyTypeValue</skos:inScheme>
+        <skos:prefLabel xml:lang="en">organicMatter</skos:prefLabel>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie/code/PropertyTypeValue/pH -->
+
+    <owl:NamedIndividual rdf:about="http://foodie-cloud.com/model/foodie/code/PropertyTypeValue/pH">
+        <rdf:type rdf:resource="&skos;Concept"/>
+        <skos:notation rdf:datatype="&xsd;NCName">pH</skos:notation>
+        <skos:inScheme>http://foodie-cloud.com/model/foodie/code/PropertyTypeValue</skos:inScheme>
+        <skos:prefLabel xml:lang="en">pH</skos:prefLabel>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie/code/PropertyTypeValue/soilTexture -->
+
+    <owl:NamedIndividual rdf:about="http://foodie-cloud.com/model/foodie/code/PropertyTypeValue/soilTexture">
+        <rdf:type rdf:resource="&skos;Concept"/>
+        <skos:notation rdf:datatype="&xsd;NCName">soilTexture</skos:notation>
+        <skos:inScheme>http://foodie-cloud.com/model/foodie/code/PropertyTypeValue</skos:inScheme>
+        <skos:prefLabel xml:lang="en">soilTexture</skos:prefLabel>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie/code/PropertyTypeValue/soilType -->
+
+    <owl:NamedIndividual rdf:about="http://foodie-cloud.com/model/foodie/code/PropertyTypeValue/soilType">
+        <rdf:type rdf:resource="&skos;Concept"/>
+        <skos:notation rdf:datatype="&xsd;NCName">soilType</skos:notation>
+        <skos:inScheme>http://foodie-cloud.com/model/foodie/code/PropertyTypeValue</skos:inScheme>
+        <skos:prefLabel xml:lang="en">soilType</skos:prefLabel>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie/code/TreatmentPurposeValue/disease -->
+
+    <owl:NamedIndividual rdf:about="http://foodie-cloud.com/model/foodie/code/TreatmentPurposeValue/disease">
+        <rdf:type rdf:resource="&skos;Concept"/>
+        <skos:notation rdf:datatype="&xsd;NCName">disease</skos:notation>
+        <skos:inScheme>http://foodie-cloud.com/model/foodie/code/TreatmentPurposeValue</skos:inScheme>
+        <skos:prefLabel xml:lang="en">disease</skos:prefLabel>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie/code/TreatmentPurposeValue/fertilization -->
+
+    <owl:NamedIndividual rdf:about="http://foodie-cloud.com/model/foodie/code/TreatmentPurposeValue/fertilization">
+        <rdf:type rdf:resource="&skos;Concept"/>
+        <skos:notation rdf:datatype="&xsd;NCName">fertilization</skos:notation>
+        <skos:inScheme>http://foodie-cloud.com/model/foodie/code/TreatmentPurposeValue</skos:inScheme>
+        <skos:prefLabel xml:lang="en">fertilization</skos:prefLabel>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie/code/TreatmentPurposeValue/pest -->
+
+    <owl:NamedIndividual rdf:about="http://foodie-cloud.com/model/foodie/code/TreatmentPurposeValue/pest">
+        <rdf:type rdf:resource="&skos;Concept"/>
+        <skos:notation rdf:datatype="&xsd;NCName">pest</skos:notation>
+        <skos:inScheme>http://foodie-cloud.com/model/foodie/code/TreatmentPurposeValue</skos:inScheme>
+        <skos:prefLabel xml:lang="en">pest</skos:prefLabel>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://foodie-cloud.com/model/foodie/code/TreatmentPurposeValue/weed -->
+
+    <owl:NamedIndividual rdf:about="http://foodie-cloud.com/model/foodie/code/TreatmentPurposeValue/weed">
+        <rdf:type rdf:resource="&skos;Concept"/>
+        <skos:notation rdf:datatype="&xsd;NCName">weed</skos:notation>
+        <skos:inScheme>http://foodie-cloud.com/model/foodie/code/TreatmentPurposeValue</skos:inScheme>
+        <skos:prefLabel xml:lang="en">weed</skos:prefLabel>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://inspire.ec.europa.eu/schemas/af/3.0/code/EconomicActivityNACEValue -->
+
+    <owl:NamedIndividual rdf:about="http://inspire.ec.europa.eu/schemas/af/3.0/code/EconomicActivityNACEValue">
+        <rdf:type rdf:resource="&skos;ConceptScheme"/>
+        <skos:notation rdf:datatype="&xsd;NCName">EconomicActivityNACEValue</skos:notation>
+        <dct:isFormatOf>http://inspire.ec.europa.eu/schemas/af/3.0#EconomicActivityNACEValue</dct:isFormatOf>
+        <skos:prefLabel xml:lang="en">EconomicActivityNACEValue</skos:prefLabel>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+
