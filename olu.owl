@@ -41,7 +41,7 @@
      xmlns:gml="http://www.opengis.net/ont/gml#">
      <owl:Ontology rdf:about="http://w3id.org/foodie/olu">
         <!-- TODO: Update on release -->
-        <owl:versionIRI rdf:resource="https://raw.githubusercontent.com/FOODIE-cloud/ontology/master/olu.ttl"/>
+        <owl:versionIRI rdf:resource="https://raw.githubusercontent.com/FOODIE-cloud/ontology/master/olu.owl"/>
         <owl:versionInfo>0.0.2017-07-31</owl:versionInfo>
         <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-07-31T10:00:00Z</dct:issued>
         <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-07-31T10:00:00Z</dct:modified>
@@ -126,21 +126,21 @@
     </owl:DatatypeProperty>
     
     
-    <!-- http://w3id.org/foodie/olu#hilucsLandUse --> <!-- FIX is it URI ?? it is according to rdf sample (rdf:resource), so objectproperty-->
+    <!-- http://w3id.org/foodie/olu#hilucsLandUse --> 
     
     <owl:DatatypeProperty rdf:about="http://w3id.org/foodie/olu#hilucsLandUse">
       <skos:notation rdf:datatype="&xsd;NCName">hilucsLandUse</skos:notation>
       <skos:prefLabel xml:lang="en">hilucsLandUse</skos:prefLabel>
-    	<rdfs:range rdf:resource="&xsd;double"/> 
+    	<rdfs:range rdf:resource="&xsd;decimal"/> 
     	<rdfs:isDefinedBy rdf:resource="http://inspire.ec.europa.eu/schemas/elu/4.0/" />
     </owl:DatatypeProperty>
     
-    <!-- http://w3id.org/foodie/olu#specificLandUse --> <!-- FIX is it string ?? it is according to rdf sample-->
+    <!-- http://w3id.org/foodie/olu#specificLandUse --> <!-- FIX IN FUTURE: According to model is URI, but its not possible nowadays-->
 
     <owl:DatatypeProperty rdf:about="&olu;specificLandUse">
         <skos:notation rdf:datatype="&xsd;NCName">specificLandUse</skos:notation>
         <skos:prefLabel xml:lang="en">specificLandUse</skos:prefLabel>
-        <rdfs:range rdf:resource="&xsd;anyURI"/>  
+        <rdfs:range rdf:resource="&xsd;string"/>  
         <rdfs:isDefinedBy rdf:resource="http://inspire.ec.europa.eu/schemas/elu/4.0/" />
     </owl:DatatypeProperty>
     
@@ -185,18 +185,6 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&prov;invalidatedAtTime"/>
-                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&common;validFrom"/>
-                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&common;validTo"/>
                 <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>

@@ -2,7 +2,7 @@
 
 <!DOCTYPE rdf:RDF [
     <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
-    <!ENTITY corine "http://w3id.org/foodie/corine#" >
+    <!ENTITY atlas "http://w3id.org/foodie/atlas#" >
     <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
@@ -20,9 +20,9 @@
     <!ENTITY vann "http://purl.org/vocab/vann/" >
 ]>
 
-<rdf:RDF xmlns="http://w3id.org/foodie/corine#"
-     xml:base="http://w3id.org/foodie/corine"
-     xmlns:corine="http://w3id.org/foodie/corine#"
+<rdf:RDF xmlns="http://w3id.org/foodie/atlas#"
+     xml:base="http://w3id.org/foodie/atlas"
+     xmlns:atlas="http://w3id.org/foodie/atlas#"
      xmlns:dct="http://purl.org/dc/terms/"
      xmlns:dc="http://purl.org/dc/elements/1.1/"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
@@ -39,21 +39,21 @@
      xmlns:geo="http://www.opengis.net/ont/geosparql#"
      xmlns:sf="http://www.opengis.net/ont/sf#"
      xmlns:gml="http://www.opengis.net/ont/gml#">
-     <owl:Ontology rdf:about="http://w3id.org/foodie/corine">
+     <owl:Ontology rdf:about="http://w3id.org/foodie/atlas">
         <!-- TODO: Update on release -->
-        <owl:versionIRI rdf:resource="https://raw.githubusercontent.com/FOODIE-cloud/ontology/master/corine.owl"/>
+        <owl:versionIRI rdf:resource="https://raw.githubusercontent.com/FOODIE-cloud/ontology/master/urban-atlas.owl"/>
         <owl:versionInfo>0.0.2017-07-31</owl:versionInfo>
         <dct:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-07-31T10:00:00Z</dct:issued>
         <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-07-31T10:00:00Z</dct:modified>
         <!-- end TODO -->
         
-        <rdfs:comment xml:lang="en">Corine ontology derived from corine sql schema</rdfs:comment>
-        <rdfs:label xml:lang="en">Corine ontology</rdfs:label>
-        <dc:title xml:lang="en">Corine ontology</dc:title>
-        <dc:source xml:lang="en">Corine data model</dc:source>
+        <rdfs:comment xml:lang="en">Urban Atlas ontology derived from urban atlas sql schema</rdfs:comment>
+        <rdfs:label xml:lang="en">Urban Atlas ontology</rdfs:label>
+        <dc:title xml:lang="en">Urban Atlas ontology</dc:title>
+        <dc:source xml:lang="en">Urban Atlas model</dc:source>
 
-        <vann:preferredNamespacePrefix>corine</vann:preferredNamespacePrefix>
-        <vann:preferredNamespaceUri>http://w3id.org/foodie/corine#</vann:preferredNamespaceUri>
+        <vann:preferredNamespacePrefix>atlas</vann:preferredNamespacePrefix>
+        <vann:preferredNamespaceUri>http://w3id.org/foodie/atlas#</vann:preferredNamespaceUri>
         <dc:creator>Raul Palma</dc:creator>
         <dct:creator rdf:resource="http://orcid.org/0000-0003-4289-4922"/>
         <dct:license rdf:resource="http://creativecommons.org/licenses/by/4.0/"/>
@@ -86,64 +86,73 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
     
-    <!-- http://w3id.org/foodie/corine#code --> 
+    <!-- http://w3id.org/foodie/atlas#cities --> 
     
-    <owl:DatatypeProperty rdf:about="http://w3id.org/foodie/corine#code">
+    <owl:DatatypeProperty rdf:about="http://w3id.org/foodie/atlas#cities">
+      <skos:notation rdf:datatype="&xsd;NCName">cities</skos:notation>
+      <skos:prefLabel xml:lang="en">cities</skos:prefLabel>
+    	<rdfs:range rdf:resource="&xsd;string"/> 
+    	<rdfs:isDefinedBy rdf:resource="http://w3id.org/foodie/atlas" />
+    </owl:DatatypeProperty>
+    
+    <!-- http://w3id.org/foodie/atlas#luzOrCit --> 
+    
+    <owl:DatatypeProperty rdf:about="http://w3id.org/foodie/atlas#luzOrCit">
+      <skos:notation rdf:datatype="&xsd;NCName">luzOrCit</skos:notation>
+      <skos:prefLabel xml:lang="en">luzOrCit</skos:prefLabel>
+    	<rdfs:range rdf:resource="&xsd;string"/> 
+    	<rdfs:isDefinedBy rdf:resource="http://w3id.org/foodie/atlas" />
+    </owl:DatatypeProperty>
+    
+    <!-- http://w3id.org/foodie/atlas#code --> 
+    
+    <owl:DatatypeProperty rdf:about="http://w3id.org/foodie/atlas#code">
       <skos:notation rdf:datatype="&xsd;NCName">code</skos:notation>
       <skos:prefLabel xml:lang="en">code</skos:prefLabel>
     	<rdfs:range rdf:resource="&xsd;string"/> 
-    	<rdfs:isDefinedBy rdf:resource="http://w3id.org/foodie/corine" />
+    	<rdfs:isDefinedBy rdf:resource="http://w3id.org/foodie/atlas" />
     </owl:DatatypeProperty>
     
-    <!-- http://w3id.org/foodie/corine#id --> 
+    <!-- http://w3id.org/foodie/atlas#item --> 
     
-    <owl:DatatypeProperty rdf:about="http://w3id.org/foodie/corine#id">
-      <skos:notation rdf:datatype="&xsd;NCName">id</skos:notation>
-      <skos:prefLabel xml:lang="en">id</skos:prefLabel>
+    <owl:DatatypeProperty rdf:about="http://w3id.org/foodie/atlas#item">
+      <skos:notation rdf:datatype="&xsd;NCName">item</skos:notation>
+      <skos:prefLabel xml:lang="en">item</skos:prefLabel>
     	<rdfs:range rdf:resource="&xsd;string"/> 
-    	<rdfs:isDefinedBy rdf:resource="http://w3id.org/foodie/corine" />
+    	<rdfs:isDefinedBy rdf:resource="http://w3id.org/foodie/atlas" />
     </owl:DatatypeProperty> 
     
-    <!-- http://w3id.org/foodie/corine#remark --> 
+    <!-- http://w3id.org/foodie/atlas#prodDate --> 
     
-    <owl:DatatypeProperty rdf:about="http://w3id.org/foodie/corine#remark">
-      <skos:notation rdf:datatype="&xsd;NCName">remark</skos:notation>
-      <skos:prefLabel xml:lang="en">remark</skos:prefLabel>
+    <owl:DatatypeProperty rdf:about="http://w3id.org/foodie/atlas#prodDate">
+      <skos:notation rdf:datatype="&xsd;NCName">prodDate</skos:notation>
+      <skos:prefLabel xml:lang="en">prodDate</skos:prefLabel>
     	<rdfs:range rdf:resource="&xsd;string"/> 
-    	<rdfs:isDefinedBy rdf:resource="http://w3id.org/foodie/corine" />
+    	<rdfs:isDefinedBy rdf:resource="http://w3id.org/foodie/atlas" />
     </owl:DatatypeProperty> 
     
-    <!-- http://w3id.org/foodie/corine#area --> 
+    <!-- http://w3id.org/foodie/atlas#shapeLength --> 
     
-    <owl:DatatypeProperty rdf:about="http://w3id.org/foodie/corine#area">
-      <skos:notation rdf:datatype="&xsd;NCName">area</skos:notation>
-      <skos:prefLabel xml:lang="en">area</skos:prefLabel>
-    	<rdfs:range rdf:resource="&xsd;double"/> 
-    	<rdfs:isDefinedBy rdf:resource="http://w3id.org/foodie/corine" />
-    </owl:DatatypeProperty> 
-    
-    <!-- http://w3id.org/foodie/corine#shapeLength --> 
-    
-    <owl:DatatypeProperty rdf:about="http://w3id.org/foodie/corine#shapeLength">
+    <owl:DatatypeProperty rdf:about="http://w3id.org/foodie/atlas#shapeLength">
       <skos:notation rdf:datatype="&xsd;NCName">shapeLength</skos:notation>
       <skos:prefLabel xml:lang="en">shapeLength</skos:prefLabel>
     	<rdfs:range rdf:resource="&xsd;double"/> 
-    	<rdfs:isDefinedBy rdf:resource="http://w3id.org/foodie/corine" />
+    	<rdfs:isDefinedBy rdf:resource="http://w3id.org/foodie/atlas" />
     </owl:DatatypeProperty> 
     
-    <!-- http://w3id.org/foodie/corine#shapeArea --> 
+    <!-- http://w3id.org/foodie/atlas#shapeArea --> 
     
-    <owl:DatatypeProperty rdf:about="http://w3id.org/foodie/corine#shapeArea">
+    <owl:DatatypeProperty rdf:about="http://w3id.org/foodie/atlas#shapeArea">
       <skos:notation rdf:datatype="&xsd;NCName">shapeArea</skos:notation>
       <skos:prefLabel xml:lang="en">shapeArea</skos:prefLabel>
     	<rdfs:range rdf:resource="&xsd;double"/> 
-    	<rdfs:isDefinedBy rdf:resource="http://w3id.org/foodie/corine" />
+    	<rdfs:isDefinedBy rdf:resource="http://w3id.org/foodie/atlas" />
     </owl:DatatypeProperty> 
     
     
-    <!-- http://w3id.org/foodie/corine#hilucsLandUse --> 
+    <!-- http://w3id.org/foodie/atlas#hilucsLandUse --> 
     
-    <owl:DatatypeProperty rdf:about="http://w3id.org/foodie/corine#hilucsLandUse">
+    <owl:DatatypeProperty rdf:about="http://w3id.org/foodie/atlas#hilucsLandUse">
       <skos:notation rdf:datatype="&xsd;NCName">hilucsLandUse</skos:notation>
       <skos:prefLabel xml:lang="en">hilucsLandUse</skos:prefLabel>
     	<rdfs:range rdf:resource="&xsd;decimal"/> 
@@ -160,9 +169,9 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
      
-     <!-- http://w3id.org/foodie/corine#CorineLandUse -->
+     <!-- http://w3id.org/foodie/atlas#UrbanAtlasLandUse -->
      
-     <owl:Class rdf:about="&corine;CorineLandUse">
+     <owl:Class rdf:about="&atlas;UrbanAtlasLandUse">
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&geo;hasGeometry"/>
@@ -170,9 +179,9 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         
-        <skos:notation rdf:datatype="&xsd;NCName">CorineLandUse</skos:notation>
-        <skos:prefLabel xml:lang="en">CorineLandUse</skos:prefLabel>
-        <rdfs:isDefinedBy rdf:resource="http://w3id.org/foodie/corine" />
+        <skos:notation rdf:datatype="&xsd;NCName">UrbanAtlasLandUse</skos:notation>
+        <skos:prefLabel xml:lang="en">UrbanAtlasLandUse</skos:prefLabel>
+        <rdfs:isDefinedBy rdf:resource="http://w3id.org/foodie/atlas" />
     </owl:Class>
 
 </rdf:RDF>
