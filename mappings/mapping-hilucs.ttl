@@ -1,0 +1,50 @@
+@prefix map: <#> .
+@prefix db: <> .
+@prefix vocab: <vocab/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix d2rq: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#> .
+@prefix jdbc: <http://d2rq.org/terms/jdbc/> .
+@prefix olu: <http://w3id.org/foodie/olu#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix hilucs: <http://w3id.org/foodie/hilucs#> .
+
+
+map:database a d2rq:Database;
+	d2rq:jdbcDriver "org.postgresql.Driver";
+	d2rq:jdbcDSN "jdbc:postgresql://localhost/olu";
+	d2rq:username "rapw3k";
+	d2rq:password "rapulin";
+	.
+
+
+# Table hilucs_values
+map:hilucs_values a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "@@hilucs_values.hilucs_land_use@@";
+	d2rq:class hilucs:Hilucs;
+	d2rq:classDefinitionLabel "Hilucs";
+	.
+map:hilucs_values__label a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:hilucs_values;
+	d2rq:property rdfs:label;
+	d2rq:pattern "HILUCS #@@hilucs_values.hilucs_land_use@@";
+	.
+map:hilucs_values_url a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:hilucs_values;
+	d2rq:property hilucs:url;
+	d2rq:uriColumn "hilucs_values.url";
+	.		
+map:hilucs_values_hilucs_land_use a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:hilucs_values;
+	d2rq:property hilucs:hilucsLandUse;
+	d2rq:column "hilucs_values.hilucs_land_use";
+	d2rq:datatype xsd:decimal;
+	.
+
+
+
+
+

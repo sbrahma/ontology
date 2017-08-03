@@ -1,0 +1,101 @@
+@prefix map: <#> .
+@prefix db: <> .
+@prefix vocab: <vocab/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix d2rq: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#> .
+@prefix jdbc: <http://d2rq.org/terms/jdbc/> .
+@prefix olu: <http://w3id.org/foodie/olu#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+
+map:database a d2rq:Database;
+	d2rq:jdbcDriver "org.postgresql.Driver";
+	d2rq:jdbcDSN "jdbc:postgresql://localhost/olu";
+	d2rq:username "rapw3k";
+	d2rq:password "rapulin";
+	.
+
+# create instances for areas_master_h1_cz_trn_geometry
+map:areas_master_h1_cz_trn_geometry a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "LandUse/@@areas_master_h1_cz_trn.id@@/geometry";
+	d2rq:class geo:Geometry;
+	d2rq:classDefinitionLabel "Geometry";
+	.
+map:areas_master_h1_cz_trn_geometry_asWKT a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:areas_master_h1_cz_trn_geometry;
+	d2rq:property geo:asWKT;
+	d2rq:column "areas_master_h1_cz_trn.geom";
+	d2rq:datatype geo:wktLiteral;
+	.
+
+
+# Table areas_master_h1_cz_trn
+map:areas_master_h1_cz_trn a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "LandUse/@@areas_master_h1_cz_trn.id@@";
+	d2rq:class olu:LandUse;
+	d2rq:classDefinitionLabel "LandUse";
+	.
+map:areas_master_h1_cz_trn__label a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:areas_master_h1_cz_trn;
+	d2rq:property rdfs:label;
+	d2rq:pattern "LandUse #@@areas_master_h1_cz_trn.id@@";
+	.
+map:areas_master_h1_cz_trn_geom a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:areas_master_h1_cz_trn;
+	d2rq:property geo:hasGeometry;
+	d2rq:uriPattern "LandUse/@@areas_master_h1_cz_trn.id@@/geometry";
+	.		
+map:areas_master_h1_cz_trn_hilucs_value a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:areas_master_h1_cz_trn;
+	d2rq:property olu:hilucsLandUse;
+	d2rq:column "areas_master_h1_cz_trn.hilucs_value";
+	d2rq:datatype xsd:decimal;
+	.
+map:areas_master_h1_cz_trn_original_value a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:areas_master_h1_cz_trn;
+	d2rq:property olu:specificLandUse;
+	d2rq:column "areas_master_h1_cz_trn.original_value";
+	d2rq:datatype xsd:string;
+	.
+map:areas_master_h1_cz_trn_country_code a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:areas_master_h1_cz_trn;
+	d2rq:property olu:countryCode;
+	d2rq:column "areas_master_h1_cz_trn.country_code";
+	d2rq:datatype xsd:string;
+	.
+map:areas_master_h1_cz_trn_municipal_code a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:areas_master_h1_cz_trn;
+	d2rq:property olu:municipalCode;
+	d2rq:column "areas_master_h1_cz_trn.municipal_code";
+	d2rq:datatype xsd:string;
+	.
+map:areas_master_h1_cz_trn_validfrom a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:areas_master_h1_cz_trn;
+	d2rq:property prov:generatedAtTime;
+	d2rq:column "areas_master_h1_cz_trn.validfrom";
+	d2rq:datatype xsd:dateTime;
+	.
+map:areas_master_h1_cz_trn_validto a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:areas_master_h1_cz_trn;
+	d2rq:property prov:invalidatedAtTime;
+	d2rq:column "areas_master_h1_cz_trn.validto";
+	d2rq:datatype xsd:dateTime;
+	.
+	
+#all rules for geometry_source			
+map:areas_master_h1_cz_trn_geometry_source a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:areas_master_h1_cz_trn;
+	d2rq:property olu:geometrySource;
+	d2rq:uriPattern "http://w3id.org/foodie/trn/@@areas_master_h1_cz_trn.geometry_source_gid@@";
+	.
+	
+#all rules for attribute source			
+map:areas_master_h1_cz_trn_attribute_source a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:areas_master_h1_cz_trn;
+	d2rq:property olu:attributeSource;
+	d2rq:uriPattern "http://w3id.org/foodie/atlas/urban_atlas/@@areas_master_h1_cz_trn.attribute_source_gid@@";
+	.
