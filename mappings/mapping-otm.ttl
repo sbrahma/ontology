@@ -28,7 +28,7 @@ map:roadlink_view_geometry a d2rq:ClassMap;
 map:roadlink_view_geometry_asWKT a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:roadlink_view_geometry;
 	d2rq:property geo:asWKT;
-	d2rq:column "roadlink_view.centerlinegeometry;";
+	d2rq:column "roadlink_view.centerlinegeometry";
 	d2rq:datatype geo:wktLiteral;
 	.
 
@@ -212,7 +212,7 @@ map:roadnode_view_geometry a d2rq:ClassMap;
 map:roadnode_view_geometry_asWKT a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:roadnode_view_geometry;
 	d2rq:property geo:asWKT;
-	d2rq:column "roadlink_view.geometry;";
+	d2rq:column "roadnode_view.geometry";
 	d2rq:datatype geo:wktLiteral;
 	.
 
