@@ -262,7 +262,7 @@ map:roadnode_view_fictitious a d2rq:PropertyBridge;
 	.
 
 
-map:roadnode_view_geometry a d2rq:PropertyBridge;
+map:roadnode_view_hasGeometry a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:roadnode_view;
 	d2rq:property geo:hasGeometry;
 	d2rq:uriPattern "RoadNode/@@roadnode_view.inspireid@@/geometry";
