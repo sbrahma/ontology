@@ -1,0 +1,1389 @@
+@prefix iso19150-2: <http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#> .
+@prefix foodie: <http://foodie-cloud.com/model/foodie#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix geo:   <http://www.opengis.net/ont/geosparql#> .
+@prefix iso19108: <http://def.seegrid.csiro.au/isotc211/iso19108/2002/temporal#> .
+@prefix dct:   <http://purl.org/dc/terms/> .
+@prefix common: <http://portele.de/ont/inspire/baseInspire#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix iso19115-citation: <http://def.seegrid.csiro.au/isotc211/iso19115/2003/citation#> .
+@prefix iso19103: <http://def.seegrid.csiro.au/isotc211/iso19103/2005/basic#> .
+@prefix prov:  <http://www.w3.org/ns/prov#> .
+@prefix dc:    <http://purl.org/dc/elements/1.1/> .
+@prefix iso19109: <http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#> .
+@prefix af-inspire:	<http://inspire.ec.europa.eu/schemas/af/3.0#> .
+@prefix act-inspire:	<http://inspire.ec.europa.eu/schemas/act-core/3.0#> .
+
+
+foodie:productSubType
+        a               owl:DatatypeProperty ;
+        rdfs:range      xsd:string ;
+        skos:notation   "productSubType"^^xsd:NCName ;
+        skos:prefLabel  "productSubType"@en .
+
+foodie:treatmentPlanCreation
+        a               owl:DatatypeProperty ;
+        rdfs:range      xsd:dateTime ;
+        skos:notation   "treatmentPlanCreation"^^xsd:NCName ;
+        skos:prefLabel  "treatmentPlanCreation"@en .
+
+<http://foodie-cloud.com/model/foodie/code/DoseUnit>
+        a               skos:ConceptScheme ;
+        dct:isFormatOf  "http://foodie-cloud.com/model/foodie#DoseUnit" ;
+        skos:notation   "DoseUnit"^^xsd:NCName ;
+        skos:prefLabel  "DoseUnit"@en .
+
+foodie:plotAlert  a     owl:ObjectProperty ;
+        rdfs:range      foodie:Alert ;
+        skos:notation   "plotAlert"^^xsd:NCName ;
+        skos:prefLabel  "plotAlert"@en .
+
+foodie:cu  a            owl:ObjectProperty ;
+        rdfs:range      iso19103:Measure ;
+        skos:notation   "Cu"^^xsd:NCName ;
+        skos:prefLabel  "Cu"@en .
+
+foodie:treatmentDescription
+        a               owl:DatatypeProperty ;
+        rdfs:range      xsd:string ;
+        skos:notation   "treatmentDescription"^^xsd:NCName ;
+        skos:prefLabel  "treatmentDescription"@en .
+
+foodie:nutrientMeasure
+        a               owl:DatatypeProperty ;
+        rdfs:range      xsd:string ;
+        skos:notation   "nutrientMeasure"^^xsd:NCName ;
+        skos:prefLabel  "nutrientMeasure"@en .
+
+<http://foodie-cloud.com/model/foodie/code/FormOfTreatmentValue/manual>
+        a               skos:Concept ;
+        skos:inScheme   "http://foodie-cloud.com/model/foodie/code/FormOfTreatmentValue" ;
+        skos:notation   "manual"^^xsd:NCName ;
+        skos:prefLabel  "manual"@en .
+
+foodie:ProductNutrients
+        a                owl:Class ;
+        rdfs:subClassOf  iso19109:AnyFeature , iso19150-2:FeatureType , geo:Feature ;
+        rdfs:subClassOf  [ a                owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:int ;
+                           owl:onProperty   foodie:nutrientName
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:nutrientMeasure
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:nutrientAmount
+                         ] ;
+        skos:notation    "ProductNutrients"^^xsd:NCName ;
+        skos:prefLabel   "ProductNutrients"@en .
+
+foodie:s  a             owl:ObjectProperty ;
+        rdfs:range      iso19103:Measure ;
+        skos:notation   "S"^^xsd:NCName ;
+        skos:prefLabel  "S"@en .
+
+foodie:productKind  a   owl:ObjectProperty ;
+        rdfs:range      foodie:ProductKindValue ;
+        skos:notation   "productKind"^^xsd:NCName ;
+        skos:prefLabel  "productKind"@en .
+
+foodie:safetyInstructions
+        a               owl:DatatypeProperty ;
+        rdfs:range      xsd:string ;
+        skos:notation   "safetyInstructions"^^xsd:NCName ;
+        skos:prefLabel  "safetyInstructions"@en .
+
+foodie:Plot  a           owl:Class ;
+        rdfs:subClassOf  iso19109:AnyFeature , geo:Feature , iso19150-2:FeatureType ;
+        rdfs:subClassOf  [ a                owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:int ;
+                           owl:onProperty   foodie:originType
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      prov:invalidatedAtTime
+                         ] ;
+        rdfs:subClassOf  [ a                owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:int ;
+                           owl:onProperty   prov:generatedAtTime
+                         ] ;
+        rdfs:subClassOf  [ a                owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:int ;
+                           owl:onProperty   foodie:code
+                         ] ;
+        rdfs:subClassOf  [ a                owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:int ;
+                           owl:onProperty   common:validFrom
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      common:validTo
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:description
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:minCardinality  "1"^^xsd:int ;
+                           owl:onProperty      geo:hasGeometry
+                         ] ;
+        skos:notation    "Plot"^^xsd:NCName ;
+        skos:prefLabel   "Plot"@en .
+
+foodie:productionAmount
+        a               owl:ObjectProperty ;
+        rdfs:range      iso19103:Measure ;
+        skos:notation   "productionAmount"^^xsd:NCName ;
+        skos:prefLabel  "productionAmount"@en .
+
+foodie:OriginTypeValue
+        a                owl:Class ;
+        rdfs:subClassOf  skos:Concept , iso19150-2:Codelist ;
+        skos:notation    "OriginTypeValue"^^xsd:NCName ;
+        skos:prefLabel   "OriginTypeValue"@en .
+
+foodie:cropArea  a      owl:ObjectProperty ;
+        rdfs:range      geo:Geometry ;
+        skos:notation   "cropArea"^^xsd:NCName ;
+        skos:prefLabel  "cropArea"@en .
+
+foodie:nutrientAmount
+        a               owl:ObjectProperty ;
+        rdfs:range      iso19103:Measure ;
+        skos:notation   "nutrientAmount"^^xsd:NCName ;
+        skos:prefLabel  "nutrientAmount"@en .
+
+foodie:formOfTreatment
+        a               owl:ObjectProperty ;
+        rdfs:range      foodie:FormOfTreatmentValue ;
+        skos:notation   "formOfTreatment"^^xsd:NCName ;
+        skos:prefLabel  "formOfTreatment"@en .
+
+foodie:DoseUnit  a       owl:Class ;
+        rdfs:subClassOf  skos:Concept , iso19150-2:Codelist ;
+        skos:notation    "DoseUnit"^^xsd:NCName ;
+        skos:prefLabel   "DoseUnit"@en .
+
+foodie:ActiveIngredients
+        a                owl:Class ;
+        rdfs:subClassOf  iso19150-2:Datatype ;
+        rdfs:subClassOf  [ a                owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:int ;
+                           owl:onProperty   foodie:ingredientName
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:ingredientAmount
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:code
+                         ] ;
+        skos:notation    "ActiveIngredients"^^xsd:NCName ;
+        skos:prefLabel   "ActiveIngredients"@en .
+
+foodie:machineId  a     owl:DatatypeProperty ;
+        rdfs:range      xsd:string ;
+        skos:notation   "machineId"^^xsd:NCName ;
+        skos:prefLabel  "machineId"@en .
+
+foodie:n  a             owl:ObjectProperty ;
+        rdfs:range      iso19103:Measure ;
+        skos:notation   "N"^^xsd:NCName ;
+        skos:prefLabel  "N"@en .
+
+foodie:status  a        owl:DatatypeProperty ;
+        rdfs:range      xsd:string ;
+        skos:notation   "status"^^xsd:NCName ;
+        skos:prefLabel  "status"@en .
+
+<http://foodie-cloud.com/model/foodie/code/PropertyTypeValue/organicMatter>
+        a               skos:Concept ;
+        skos:inScheme   "http://foodie-cloud.com/model/foodie/code/PropertyTypeValue" ;
+        skos:notation   "organicMatter"^^xsd:NCName ;
+        skos:prefLabel  "organicMatter"@en .
+
+foodie:TreatmentPlan  a  owl:Class ;
+        rdfs:subClassOf  iso19109:AnyFeature , iso19150-2:FeatureType , geo:Feature ;
+        rdfs:subClassOf  [ a                owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:int ;
+                           owl:onProperty   foodie:type
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:notes
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:minCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:planProduct
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:treatmentPlanCode
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:minCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:campaign
+                         ] ;
+        rdfs:subClassOf  [ a                owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:int ;
+                           owl:onProperty   foodie:treatmentPlanCreation
+                         ] ;
+        rdfs:subClassOf  [ a                owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:int ;
+                           owl:onProperty   foodie:description
+                         ] ;
+        skos:notation    "TreatmentPlan"^^xsd:NCName ;
+        skos:prefLabel   "TreatmentPlan"@en .
+
+<http://foodie-cloud.com/model/foodie/code/PropertyTypeValue>
+        a               skos:ConceptScheme ;
+        dct:isFormatOf  "http://foodie-cloud.com/model/foodie#PropertyTypeValue" ;
+        skos:notation   "PropertyTypeValue"^^xsd:NCName ;
+        skos:prefLabel  "PropertyTypeValue"@en .
+
+foodie:motionSpeed  a   owl:ObjectProperty ;
+        rdfs:range      iso19103:Measure ;
+        skos:notation   "motionSpeed"^^xsd:NCName ;
+        skos:prefLabel  "motionSpeed"@en .
+
+<http://foodie-cloud.com/model/foodie/code/PropertyTypeValue/electricConductivity>
+        a               skos:Concept ;
+        skos:inScheme   "http://foodie-cloud.com/model/foodie/code/PropertyTypeValue" ;
+        skos:notation   "electricConductivity"^^xsd:NCName ;
+        skos:prefLabel  "electricConductivity"@en .
+
+foodie:interventionStart
+        a               owl:DatatypeProperty ;
+        rdfs:range      xsd:dateTime ;
+        skos:notation   "interventionStart"^^xsd:NCName ;
+        skos:prefLabel  "interventionStart"@en .
+
+foodie:storageHandling
+        a               owl:DatatypeProperty ;
+        rdfs:range      xsd:string ;
+        skos:notation   "storageHandling"^^xsd:NCName ;
+        skos:prefLabel  "storageHandling"@en .
+
+foodie:alertDate  a     owl:DatatypeProperty ;
+        rdfs:range      xsd:date ;
+        skos:notation   "alertDate"^^xsd:NCName ;
+        skos:prefLabel  "alertDate"@en .
+
+foodie:variety  a       owl:DatatypeProperty ;
+        rdfs:range      xsd:string ;
+        skos:notation   "variety"^^xsd:NCName ;
+        skos:prefLabel  "variety"@en .
+
+<http://foodie-cloud.com/model/foodie/code/PropertyTypeValue/soilType>
+        a               skos:Concept ;
+        skos:inScheme   "http://foodie-cloud.com/model/foodie/code/PropertyTypeValue" ;
+        skos:notation   "soilType"^^xsd:NCName ;
+        skos:prefLabel  "soilType"@en .
+
+foodie:production  a    owl:ObjectProperty ;
+        rdfs:range      foodie:ProductionType ;
+        skos:notation   "production"^^xsd:NCName ;
+        skos:prefLabel  "production"@en .
+
+foodie:description  a   owl:DatatypeProperty ;
+        rdfs:range      xsd:string ;
+        skos:notation   "description"^^xsd:NCName ;
+        skos:prefLabel  "description"@en .
+
+foodie:registrationCode
+        a               owl:DatatypeProperty ;
+        rdfs:range      xsd:string ;
+        skos:notation   "registrationCode"^^xsd:NCName ;
+        skos:prefLabel  "registrationCode"@en .
+
+foodie:notes  a         owl:DatatypeProperty ;
+        rdfs:range      xsd:string ;
+        skos:notation   "notes"^^xsd:NCName ;
+        skos:prefLabel  "notes"@en .
+
+foodie:manufacturer  a  owl:ObjectProperty ;
+        rdfs:range      iso19115-citation:ResponsibleParty ;
+        skos:notation   "manufacturer"^^xsd:NCName ;
+        skos:prefLabel  "manufacturer"@en .
+
+foodie:nutrient  a      owl:ObjectProperty ;
+        rdfs:range      foodie:ProductNutrients ;
+        skos:notation   "nutrient"^^xsd:NCName ;
+        skos:prefLabel  "nutrient"@en .
+
+foodie:PropertyTypeValue
+        a                owl:Class ;
+        rdfs:subClassOf  skos:Concept , iso19150-2:Codelist ;
+        skos:notation    "PropertyTypeValue"^^xsd:NCName ;
+        skos:prefLabel   "PropertyTypeValue"@en .
+
+foodie:productCode  a   owl:DatatypeProperty ;
+        rdfs:range      xsd:string ;
+        skos:notation   "productCode"^^xsd:NCName ;
+        skos:prefLabel  "productCode"@en .
+
+foodie:species  a       owl:DatatypeProperty ;
+        rdfs:range      xsd:string ;
+        skos:notation   "species"^^xsd:NCName ;
+        skos:prefLabel  "species"@en .
+
+foodie:plan  a          owl:ObjectProperty ;
+        rdfs:range      foodie:TreatmentPlan ;
+        skos:notation   "plan"^^xsd:NCName ;
+        skos:prefLabel  "plan"@en .
+
+<http://foodie-cloud.com/model/foodie/code/PropertyTypeValue/soilTexture>
+        a               skos:Concept ;
+        skos:inScheme   "http://foodie-cloud.com/model/foodie/code/PropertyTypeValue" ;
+        skos:notation   "soilTexture"^^xsd:NCName ;
+        skos:prefLabel  "soilTexture"@en .
+
+foodie:campaign  a      owl:ObjectProperty ;
+        rdfs:range      iso19108:Period ;
+        skos:notation   "campaign"^^xsd:NCName ;
+        skos:prefLabel  "campaign"@en .
+
+foodie:preparation  a   owl:ObjectProperty ;
+        rdfs:range      foodie:ProductPreparation ;
+        owl:inverseOf   foodie:preparationProduct ;
+        skos:notation   "preparation"^^xsd:NCName ;
+        skos:prefLabel  "preparation"@en .
+
+foodie:caO  a           owl:ObjectProperty ;
+        rdfs:range      iso19103:Measure ;
+        skos:notation   "CaO"^^xsd:NCName ;
+        skos:prefLabel  "CaO"@en .
+
+foodie:originType  a    owl:ObjectProperty ;
+        rdfs:range      foodie:OriginTypeValue ;
+        skos:notation   "originType"^^xsd:NCName ;
+        skos:prefLabel  "originType"@en .
+
+foodie:propertyName  a  owl:DatatypeProperty ;
+        rdfs:range      xsd:string ;
+        skos:notation   "propertyName"^^xsd:NCName ;
+        skos:prefLabel  "propertyName"@en .
+
+foodie:price  a         owl:DatatypeProperty ;
+        rdfs:range      xsd:string ;
+        skos:notation   "price"^^xsd:NCName ;
+        skos:prefLabel  "price"@en .
+
+foodie:treatmentPurpose
+        a               owl:ObjectProperty ;
+        rdfs:range      foodie:TreatmentPurposeValue ;
+        skos:notation   "treatmentPurpose"^^xsd:NCName ;
+        skos:prefLabel  "treatmentPurpose"@en .
+
+foodie:ProductPreparation
+        a                owl:Class ;
+        rdfs:subClassOf  iso19109:AnyFeature , iso19150-2:FeatureType , geo:Feature ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:solventQuantity
+                         ] ;
+        rdfs:subClassOf  [ a                owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:int ;
+                           owl:onProperty   foodie:safetyPeriod
+                         ] ;
+        rdfs:subClassOf  [ a                owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:int ;
+                           owl:onProperty   foodie:productQuantity
+                         ] ;
+        skos:notation    "ProductPreparation"^^xsd:NCName ;
+        skos:prefLabel   "ProductPreparation"@en .
+
+foodie:fe  a            owl:ObjectProperty ;
+        rdfs:range      iso19103:Measure ;
+        skos:notation   "Fe"^^xsd:NCName ;
+        skos:prefLabel  "Fe"@en .
+
+foodie:speciesAlert  a  owl:ObjectProperty ;
+        rdfs:range      foodie:Alert ;
+        skos:notation   "speciesAlert"^^xsd:NCName ;
+        skos:prefLabel  "speciesAlert"@en .
+
+<http://foodie-cloud.com/model/foodie/code/TreatmentPurposeValue/pest>
+        a               skos:Concept ;
+        skos:inScheme   "http://foodie-cloud.com/model/foodie/code/TreatmentPurposeValue" ;
+        skos:notation   "pest"^^xsd:NCName ;
+        skos:prefLabel  "pest"@en .
+
+foodie:mgO  a           owl:ObjectProperty ;
+        rdfs:range      iso19103:Measure ;
+        skos:notation   "MgO"^^xsd:NCName ;
+        skos:prefLabel  "MgO"@en .
+
+foodie:quantity  a      owl:ObjectProperty ;
+        rdfs:range      iso19103:Measure ;
+        skos:notation   "quantity"^^xsd:NCName ;
+        skos:prefLabel  "quantity"@en .
+
+foodie:analysisDate  a  owl:DatatypeProperty ;
+        rdfs:range      xsd:date ;
+        skos:notation   "analysisDate"^^xsd:NCName ;
+        skos:prefLabel  "analysisDate"@en .
+
+foodie:genus  a         owl:DatatypeProperty ;
+        rdfs:range      xsd:string ;
+        skos:notation   "genus"^^xsd:NCName ;
+        skos:prefLabel  "genus"@en .
+
+foodie:productionDate
+        a               owl:DatatypeProperty ;
+        rdfs:range      xsd:date ;
+        skos:notation   "productionDate"^^xsd:NCName ;
+        skos:prefLabel  "productionDate"@en .
+
+foodie:productQuantity
+        a               owl:ObjectProperty ;
+        rdfs:range      iso19103:Measure ;
+        skos:notation   "productQuantity"^^xsd:NCName ;
+        skos:prefLabel  "productQuantity"@en .
+
+foodie:code  a          owl:DatatypeProperty ;
+        rdfs:range      xsd:string ;
+        skos:notation   "code"^^xsd:NCName ;
+        skos:prefLabel  "code"@en .
+
+foodie:soilProperty  a  owl:ObjectProperty ;
+        rdfs:range      foodie:PropertyType ;
+        skos:notation   "soilProperty"^^xsd:NCName ;
+        skos:prefLabel  "soilProperty"@en .
+
+foodie:ManagementZone
+        a                owl:Class ;
+        rdfs:subClassOf  geo:Feature , iso19150-2:FeatureType , iso19109:AnyFeature ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      prov:invalidatedAtTime
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      common:validTo
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      common:validFrom
+                         ] ;
+        rdfs:subClassOf  [ a                owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:int ;
+                           owl:onProperty   foodie:notes
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:minCardinality  "1"^^xsd:int ;
+                           owl:onProperty      geo:hasGeometry
+                         ] ;
+        rdfs:subClassOf  [ a                owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:int ;
+                           owl:onProperty   prov:generatedAtTime
+                         ] ;
+        rdfs:subClassOf  [ a                owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:int ;
+                           owl:onProperty   foodie:code
+                         ] ;
+        skos:notation    "ManagementZone"^^xsd:NCName ;
+        skos:prefLabel   "ManagementZone"@en .
+
+foodie:preparationPlan
+        a               owl:ObjectProperty ;
+        rdfs:range      foodie:TreatmentPlan ;
+        skos:notation   "preparationPlan"^^xsd:NCName ;
+        skos:prefLabel  "preparationPlan"@en .
+
+foodie:mn  a            owl:ObjectProperty ;
+        rdfs:range      iso19103:Measure ;
+        skos:notation   "Mn"^^xsd:NCName ;
+        skos:prefLabel  "Mn"@en .
+
+foodie:productName  a   owl:DatatypeProperty ;
+        rdfs:range      xsd:string ;
+        skos:notation   "productName"^^xsd:NCName ;
+        skos:prefLabel  "productName"@en .
+
+foodie:NutrientsType  a  owl:Class ;
+        rdfs:subClassOf  iso19150-2:Datatype ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:mgO
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:caO
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:k2O
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:b
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:fe
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:s
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:zn
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:p2O5
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:n
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:mo
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:mn
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:cu
+                         ] ;
+        skos:notation    "NutrientsType"^^xsd:NCName ;
+        skos:prefLabel   "NutrientsType"@en .
+
+foodie:treatmentProduct
+        a               owl:ObjectProperty ;
+        rdfs:range      foodie:Product ;
+        skos:notation   "treatmentProduct"^^xsd:NCName ;
+        skos:prefLabel  "treatmentProduct"@en .
+
+foodie:operator  a      owl:ObjectProperty ;
+        rdfs:range      iso19115-citation:ResponsibleParty ;
+        skos:notation   "operator"^^xsd:NCName ;
+        skos:prefLabel  "operator"@en .
+
+<http://foodie-cloud.com/model/foodie/code/ProductKindValue/organic>
+        a               skos:Concept ;
+        skos:inScheme   "http://foodie-cloud.com/model/foodie/code/ProductKindValue" ;
+        skos:notation   "organic"^^xsd:NCName ;
+        skos:prefLabel  "organic"@en .
+
+foodie:Intervention  a   owl:Class ;
+        rdfs:subClassOf  iso19150-2:FeatureType , geo:Feature , iso19109:AnyFeature ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:notes
+                         ] ;
+        rdfs:subClassOf  [ a                owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:int ;
+                           owl:onProperty   foodie:description
+                         ] ;
+        rdfs:subClassOf  [ a                owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:int ;
+                           owl:onProperty   foodie:type
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:interventionPlot
+                         ] ;
+        rdfs:subClassOf  [ a                owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:int ;
+                           owl:onProperty   foodie:status
+                         ] ;
+        rdfs:subClassOf  [ a                owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:int ;
+                           owl:onProperty   foodie:interventionStart
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:supervisor
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:minCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:interventionGeometry
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:price
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:minCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:evidenceParty
+                         ] ;
+        rdfs:subClassOf  [ a                owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:int ;
+                           owl:onProperty   foodie:creationDateTime
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:interventionEnd
+                         ] ;
+        skos:notation    "Intervention"^^xsd:NCName ;
+        skos:prefLabel   "Intervention"@en .
+
+<http://foodie-cloud.com/model/foodie/code/FormOfTreatmentValue/aerial>
+        a               skos:Concept ;
+        skos:inScheme   "http://foodie-cloud.com/model/foodie/code/FormOfTreatmentValue" ;
+        skos:notation   "aerial"^^xsd:NCName ;
+        skos:prefLabel  "aerial"@en .
+
+foodie:ProductKindValue
+        a                owl:Class ;
+        rdfs:subClassOf  skos:Concept , iso19150-2:Codelist ;
+        skos:notation    "ProductKindValue"^^xsd:NCName ;
+        skos:prefLabel   "ProductKindValue"@en .
+
+foodie:alertZone  a     owl:ObjectProperty ;
+        rdfs:range      foodie:ManagementZone ;
+        owl:inverseOf   foodie:zoneAlert ;
+        skos:notation   "alertZone"^^xsd:NCName ;
+        skos:prefLabel  "alertZone"@en .
+
+foodie:ingredientProduct
+        a               owl:ObjectProperty ;
+        rdfs:range      foodie:Product ;
+        skos:notation   "ingredientProduct"^^xsd:NCName ;
+        skos:prefLabel  "ingredientProduct"@en .
+
+<http://foodie-cloud.com/model/foodie/code/TreatmentPurposeValue/fertilization>
+        a               skos:Concept ;
+        skos:inScheme   "http://foodie-cloud.com/model/foodie/code/TreatmentPurposeValue" ;
+        skos:notation   "fertilization"^^xsd:NCName ;
+        skos:prefLabel  "fertilization"@en .
+
+foodie:ingredientName
+        a               owl:DatatypeProperty ;
+        rdfs:range      xsd:string ;
+        skos:notation   "ingredientName"^^xsd:NCName ;
+        skos:prefLabel  "ingredientName"@en .
+
+<http://foodie-cloud.com/model/foodie/code/FormOfTreatmentValue/applicationMachine>
+        a               skos:Concept ;
+        skos:inScheme   "http://foodie-cloud.com/model/foodie/code/FormOfTreatmentValue" ;
+        skos:notation   "applicationMachine"^^xsd:NCName ;
+        skos:prefLabel  "applicationMachine"@en .
+
+<http://foodie-cloud.com/model/foodie/code/ProductKindValue>
+        a               skos:ConceptScheme ;
+        dct:isFormatOf  "http://foodie-cloud.com/model/foodie#ProductKindValue" ;
+        skos:notation   "ProductKindValue"^^xsd:NCName ;
+        skos:prefLabel  "ProductKindValue"@en .
+
+<http://foodie-cloud.com/model/foodie/code/PropertyTypeValue/pH>
+        a               skos:Concept ;
+        skos:inScheme   "http://foodie-cloud.com/model/foodie/code/PropertyTypeValue" ;
+        skos:notation   "pH"^^xsd:NCName ;
+        skos:prefLabel  "pH"@en .
+
+foodie:ingredientAmount
+        a               owl:ObjectProperty ;
+        rdfs:range      iso19103:Measure ;
+        skos:notation   "ingredientAmount"^^xsd:NCName ;
+        skos:prefLabel  "ingredientAmount"@en .
+
+foodie:checkedByUser  a  owl:DatatypeProperty ;
+        rdfs:range      xsd:boolean ;
+        skos:notation   "checkedByUser"^^xsd:NCName ;
+        skos:prefLabel  "checkedByUser"@en .
+
+<http://foodie-cloud.com/model/foodie/code/TreatmentPurposeValue/weed>
+        a               skos:Concept ;
+        skos:inScheme   "http://foodie-cloud.com/model/foodie/code/TreatmentPurposeValue" ;
+        skos:notation   "weed"^^xsd:NCName ;
+        skos:prefLabel  "weed"@en .
+
+foodie:k2O  a           owl:ObjectProperty ;
+        rdfs:range      iso19103:Measure ;
+        skos:notation   "K2O"^^xsd:NCName ;
+        skos:prefLabel  "K2O"@en .
+
+foodie:SoilNutrients  a  owl:Class ;
+        rdfs:subClassOf  iso19109:AnyFeature , iso19150-2:FeatureType , geo:Feature ;
+        rdfs:subClassOf  [ a                owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:int ;
+                           owl:onProperty   foodie:nutrientName
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:nutrientMeasure
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:nutrientAmount
+                         ] ;
+        skos:notation    "SoilNutrients"^^xsd:NCName ;
+        skos:prefLabel   "SoilNutrients"@en .
+
+foodie:pressure  a      owl:ObjectProperty ;
+        rdfs:range      iso19103:Measure ;
+        skos:notation   "pressure"^^xsd:NCName ;
+        skos:prefLabel  "pressure"@en .
+
+<http://foodie-cloud.com/model/foodie/code/TreatmentPurposeValue/disease>
+        a               skos:Concept ;
+        skos:inScheme   "http://foodie-cloud.com/model/foodie/code/TreatmentPurposeValue" ;
+        skos:notation   "disease"^^xsd:NCName ;
+        skos:prefLabel  "disease"@en .
+
+foodie:Alert  a          owl:Class ;
+        rdfs:subClassOf  iso19109:AnyFeature , iso19150-2:FeatureType , geo:Feature ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:minCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:alertGeometry
+                         ] ;
+        rdfs:subClassOf  [ a                owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:int ;
+                           owl:onProperty   foodie:code
+                         ] ;
+        rdfs:subClassOf  [ a                owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:int ;
+                           owl:onProperty   foodie:alertDate
+                         ] ;
+        rdfs:subClassOf  [ a                owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:int ;
+                           owl:onProperty   foodie:checkedByUser
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:minCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:type
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:description
+                         ] ;
+        skos:notation    "Alert"^^xsd:NCName ;
+        skos:prefLabel   "Alert"@en .
+
+foodie:containsZone  a  owl:ObjectProperty ;
+        rdfs:range      foodie:ManagementZone ;
+        skos:notation   "containsZone"^^xsd:NCName ;
+        skos:prefLabel  "containsZone"@en .
+
+foodie:b  a             owl:ObjectProperty ;
+        rdfs:range      iso19103:Measure ;
+        skos:notation   "B"^^xsd:NCName ;
+        skos:prefLabel  "B"@en .
+
+foodie:family  a        owl:DatatypeProperty ;
+        rdfs:range      xsd:string ;
+        skos:notation   "family"^^xsd:NCName ;
+        skos:prefLabel  "family"@en .
+
+<http://foodie-cloud.com/model/foodie/code/DoseUnit/minimumDose>
+        a               skos:Concept ;
+        skos:inScheme   "http://foodie-cloud.com/model/foodie/code/DoseUnit" ;
+        skos:notation   "minimumDose"^^xsd:NCName ;
+        skos:prefLabel  "minimumDose"@en .
+
+foodie:zoneAlert  a     owl:ObjectProperty ;
+        rdfs:range      foodie:Alert ;
+        skos:notation   "zoneAlert"^^xsd:NCName ;
+        skos:prefLabel  "zoneAlert"@en .
+
+foodie:evidenceParty  a  owl:ObjectProperty ;
+        rdfs:range      iso19115-citation:ResponsibleParty ;
+        skos:notation   "evidenceParty"^^xsd:NCName ;
+        skos:prefLabel  "evidenceParty"@en .
+
+<http://foodie-cloud.com/model/foodie/code/OriginTypeValue>
+        a               skos:ConceptScheme ;
+        dct:isFormatOf  "http://foodie-cloud.com/model/foodie#OriginTypeValue" ;
+        skos:notation   "OriginTypeValue"^^xsd:NCName ;
+        skos:prefLabel  "OriginTypeValue"@en .
+
+foodie:propertyType  a  owl:ObjectProperty ;
+        rdfs:range      foodie:PropertyTypeValue ;
+        skos:notation   "propertyType"^^xsd:NCName ;
+        skos:prefLabel  "propertyType"@en .
+
+<http://foodie-cloud.com/model/foodie/code/OriginTypeValue/system>
+        a               skos:Concept ;
+        skos:inScheme   "http://foodie-cloud.com/model/foodie/code/OriginTypeValue" ;
+        skos:notation   "system"^^xsd:NCName ;
+        skos:prefLabel  "system"@en .
+
+foodie:nonQuantitativeProperty
+        a               owl:DatatypeProperty ;
+        rdfs:range      xsd:string ;
+        skos:notation   "nonQuantitativeProperty"^^xsd:NCName ;
+        skos:prefLabel  "nonQuantitativeProperty"@en .
+
+foodie:TreatmentPurposeValue
+        a                owl:Class ;
+        rdfs:subClassOf  skos:Concept , iso19150-2:Codelist ;
+        skos:notation    "TreatmentPurposeValue"^^xsd:NCName ;
+        skos:prefLabel   "TreatmentPurposeValue"@en .
+
+foodie:productionProperty
+        a               owl:ObjectProperty ;
+        rdfs:range      foodie:PropertyType ;
+        skos:notation   "productionProperty"^^xsd:NCName ;
+        skos:prefLabel  "productionProperty"@en .
+
+foodie:speciesPlot  a   owl:ObjectProperty ;
+        rdfs:range      foodie:Plot ;
+        skos:notation   "speciesPlot"^^xsd:NCName ;
+        skos:prefLabel  "speciesPlot"@en .
+
+foodie:planProduct  a   owl:ObjectProperty ;
+        rdfs:range      foodie:Product ;
+        skos:notation   "planProduct"^^xsd:NCName ;
+        skos:prefLabel  "planProduct"@en .
+
+foodie:treatmentPlanCode
+        a               owl:DatatypeProperty ;
+        rdfs:range      xsd:string ;
+        skos:notation   "treatmentPlanCode"^^xsd:NCName ;
+        skos:prefLabel  "treatmentPlanCode"@en .
+
+<http://foodie-cloud.com/model/foodie/code/ProductKindValue/mineral>
+        a               skos:Concept ;
+        skos:inScheme   "http://foodie-cloud.com/model/foodie/code/ProductKindValue" ;
+        skos:notation   "mineral"^^xsd:NCName ;
+        skos:prefLabel  "mineral"@en .
+
+<http://foodie-cloud.com/model/foodie/code/DoseUnit/maximumDose>
+        a               skos:Concept ;
+        skos:inScheme   "http://foodie-cloud.com/model/foodie/code/DoseUnit" ;
+        skos:notation   "maximumDose"^^xsd:NCName ;
+        skos:prefLabel  "maximumDose"@en .
+
+foodie:registerUrl  a   owl:DatatypeProperty ;
+        rdfs:range      xsd:anyURI ;
+        skos:notation   "registerUrl"^^xsd:NCName ;
+        skos:prefLabel  "registerUrl"@en .
+
+foodie:areaDose  a      owl:ObjectProperty ;
+        rdfs:range      foodie:DoseUnit ;
+        skos:notation   "areaDose"^^xsd:NCName ;
+        skos:prefLabel  "areaDose"@en .
+
+foodie:supervisor  a    owl:ObjectProperty ;
+        rdfs:range      iso19115-citation:ResponsibleParty ;
+        skos:notation   "supervisor"^^xsd:NCName ;
+        skos:prefLabel  "supervisor"@en .
+
+foodie:solventQuantity
+        a               owl:ObjectProperty ;
+        rdfs:range      iso19103:Measure ;
+        skos:notation   "solventQuantity"^^xsd:NCName ;
+        skos:prefLabel  "solventQuantity"@en .
+
+foodie:productPlan  a   owl:ObjectProperty ;
+        rdfs:range      foodie:TreatmentPlan ;
+        owl:inverseOf   foodie:planProduct ;
+        skos:notation   "productPlan"^^xsd:NCName ;
+        skos:prefLabel  "productPlan"@en .
+
+foodie:applicationWidth
+        a               owl:ObjectProperty ;
+        rdfs:range      iso19103:Measure ;
+        skos:notation   "applicationWidth"^^xsd:NCName ;
+        skos:prefLabel  "applicationWidth"@en .
+
+foodie:interventionEnd
+        a               owl:DatatypeProperty ;
+        rdfs:range      xsd:dateTime ;
+        skos:notation   "interventionEnd"^^xsd:NCName ;
+        skos:prefLabel  "interventionEnd"@en .
+
+foodie:productType  a   owl:DatatypeProperty ;
+        rdfs:range      xsd:string ;
+        skos:notation   "productType"^^xsd:NCName ;
+        skos:prefLabel  "productType"@en .
+
+foodie:PropertyType  a   owl:Class ;
+        rdfs:subClassOf  iso19150-2:Datatype ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:quantitativeProperty
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:propertyType
+                         ] ;
+        rdfs:subClassOf  [ a                owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:int ;
+                           owl:onProperty   foodie:propertyName
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:nonQuantitativeProperty
+                         ] ;
+        rdfs:subClassOf  [ a                owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:int ;
+                           owl:onProperty   foodie:analysisDate
+                         ] ;
+        skos:notation    "PropertyType"^^xsd:NCName ;
+        skos:prefLabel   "PropertyType"@en .
+
+foodie:productTreatment
+        a               owl:ObjectProperty ;
+        rdfs:range      foodie:Treatment ;
+        owl:inverseOf   foodie:treatmentProduct ;
+        skos:notation   "productTreatment"^^xsd:NCName ;
+        skos:prefLabel  "productTreatment"@en .
+
+foodie:endDate  a       owl:DatatypeProperty ;
+        rdfs:range      xsd:date ;
+        skos:notation   "endDate"^^xsd:NCName ;
+        skos:prefLabel  "endDate"@en .
+
+foodie:FormOfTreatmentValue
+        a                owl:Class ;
+        rdfs:subClassOf  skos:Concept , iso19150-2:Codelist ;
+        skos:notation    "FormOfTreatmentValue"^^xsd:NCName ;
+        skos:prefLabel   "FormOfTreatmentValue"@en .
+
+foodie:nutrientName  a  owl:DatatypeProperty ;
+        rdfs:range      xsd:Name ;
+        skos:notation   "nutrientName"^^xsd:NCName ;
+        skos:prefLabel  "nutrientName"@en .
+
+foodie:flowAdjustment
+        a               owl:ObjectProperty ;
+        rdfs:range      iso19103:Measure ;
+        skos:notation   "flowAdjustment"^^xsd:NCName ;
+        skos:prefLabel  "flowAdjustment"@en .
+
+foodie:quantitativeProperty
+        a               owl:ObjectProperty ;
+        rdfs:range      iso19103:Measure ;
+        skos:notation   "quantitativeProperty"^^xsd:NCName ;
+        skos:prefLabel  "quantitativeProperty"@en .
+
+foodie:cropSpecies  a   owl:ObjectProperty ;
+        rdfs:range      foodie:CropType ;
+        skos:notation   "cropSpecies"^^xsd:NCName ;
+        skos:prefLabel  "cropSpecies"@en .
+
+<http://foodie-cloud.com/model/foodie/code/TreatmentPurposeValue>
+        a               skos:ConceptScheme ;
+        dct:isFormatOf  "http://foodie-cloud.com/model/foodie#TreatmentPurposeValue" ;
+        skos:notation   "TreatmentPurposeValue"^^xsd:NCName ;
+        skos:prefLabel  "TreatmentPurposeValue"@en .
+
+foodie:tractorId  a     owl:DatatypeProperty ;
+        rdfs:range      xsd:string ;
+        skos:notation   "tractorId"^^xsd:NCName ;
+        skos:prefLabel  "tractorId"@en .
+
+foodie:mo  a            owl:ObjectProperty ;
+        rdfs:range      iso19103:Measure ;
+        skos:notation   "Mo"^^xsd:NCName ;
+        skos:prefLabel  "Mo"@en .
+
+foodie:creationDateTime
+        a               owl:DatatypeProperty ;
+        rdfs:range      xsd:dateTime ;
+        skos:notation   "creationDateTime"^^xsd:NCName ;
+        skos:prefLabel  "creationDateTime"@en .
+
+foodie:Product  a        owl:Class ;
+        rdfs:subClassOf  iso19150-2:FeatureType , iso19109:AnyFeature , geo:Feature ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:description
+                         ] ;
+        rdfs:subClassOf  [ a                owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:int ;
+                           owl:onProperty   foodie:productKind
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:preparation
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:price
+                         ] ;
+        rdfs:subClassOf  [ a                owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:int ;
+                           owl:onProperty   foodie:productType
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:storageHandling
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:minCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:productName
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:safetyInstructions
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:minCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:manufacturer
+                         ] ;
+        skos:notation    "Product"^^xsd:NCName ;
+        skos:prefLabel   "Product"@en .
+
+foodie:CropSpecies  a    owl:Class ;
+        rdfs:subClassOf  iso19150-2:FeatureType , geo:Feature , iso19109:AnyFeature ;
+        rdfs:subClassOf  [ a                owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:int ;
+                           owl:onProperty   foodie:beginDate
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:endDate
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:minCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:cropArea
+                         ] ;
+        rdfs:subClassOf  [ a                owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:int ;
+                           owl:onProperty   foodie:cropSpecies
+                         ] ;
+        skos:notation    "CropSpecies"^^xsd:NCName ;
+        skos:prefLabel   "CropSpecies"@en .
+
+foodie:p2O5  a          owl:ObjectProperty ;
+        rdfs:range      iso19103:Measure ;
+        skos:notation   "P2O5"^^xsd:NCName ;
+        skos:prefLabel  "P2O5"@en .
+
+foodie:CropType  a       owl:Class ;
+        rdfs:subClassOf  iso19150-2:Datatype ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:code
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:notes
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:variety
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:description
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:family
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:species
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:genus
+                         ] ;
+        skos:notation    "CropType"^^xsd:NCName ;
+        skos:prefLabel   "CropType"@en .
+
+foodie:zoneNutrients  a  owl:ObjectProperty ;
+        rdfs:range      foodie:SoilNutrients ;
+        skos:notation   "zoneNutrients"^^xsd:NCName ;
+        skos:prefLabel  "zoneNutrients"@en .
+
+<http://foodie-cloud.com/model/foodie/code/FormOfTreatmentValue>
+        a               skos:ConceptScheme ;
+        dct:isFormatOf  "http://foodie-cloud.com/model/foodie#FormOfTreatmentValue" ;
+        skos:notation   "FormOfTreatmentValue"^^xsd:NCName ;
+        skos:prefLabel  "FormOfTreatmentValue"@en .
+
+foodie:interventionPlot
+        a               owl:ObjectProperty ;
+        rdfs:range      foodie:Plot ;
+        skos:notation   "interventionPlot"^^xsd:NCName ;
+        skos:prefLabel  "interventionPlot"@en .
+
+foodie:type  a          owl:DatatypeProperty ;
+        rdfs:range      xsd:string ;
+        skos:notation   "type"^^xsd:NCName ;
+        skos:prefLabel  "type"@en .
+
+foodie:Treatment  a      owl:Class ;
+        rdfs:subClassOf  geo:Feature , iso19150-2:FeatureType , iso19109:AnyFeature , foodie:Intervention ;
+        rdfs:subClassOf  [ a                owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:int ;
+                           owl:onProperty   foodie:formOfTreatment
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:areaDose
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:plan
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:price
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:motionSpeed
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:minCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:treatmentProduct
+                         ] ;
+        rdfs:subClassOf  [ a                owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:int ;
+                           owl:onProperty   foodie:quantity
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:flowAdjustment
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:applicationWidth
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:treatmentDescription
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:pressure
+                         ] ;
+        skos:notation    "Treatment"^^xsd:NCName ;
+        skos:prefLabel   "Treatment"@en .
+
+<http://foodie-cloud.com/model/foodie/code/OriginTypeValue/manual>
+        a               skos:Concept ;
+        skos:inScheme   "http://foodie-cloud.com/model/foodie/code/OriginTypeValue" ;
+        skos:notation   "manual"^^xsd:NCName ;
+        skos:prefLabel  "manual"@en .
+
+foodie:interventionGeometry
+        a               owl:ObjectProperty ;
+        rdfs:range      geo:Geometry ;
+        skos:notation   "interventionGeometry"^^xsd:NCName ;
+        skos:prefLabel  "interventionGeometry"@en .
+
+foodie:preparationProduct
+        a               owl:ObjectProperty ;
+        rdfs:range      foodie:Product ;
+        skos:notation   "preparationProduct"^^xsd:NCName ;
+        skos:prefLabel  "preparationProduct"@en .
+
+foodie:ProductionType
+        a                owl:Class ;
+        rdfs:subClassOf  iso19150-2:Datatype ;
+        rdfs:subClassOf  [ a                owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:int ;
+                           owl:onProperty   foodie:variety
+                         ] ;
+        rdfs:subClassOf  [ a                owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:int ;
+                           owl:onProperty   foodie:productionDate
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      foodie:productionAmount
+                         ] ;
+        skos:notation    "ProductionType"^^xsd:NCName ;
+        skos:prefLabel   "ProductionType"@en .
+
+foodie:beginDate  a     owl:DatatypeProperty ;
+        rdfs:range      xsd:date ;
+        skos:notation   "beginDate"^^xsd:NCName ;
+        skos:prefLabel  "beginDate"@en .
+
+<http://foodie-cloud.com/model/foodie>
+        a                owl:Ontology ;
+        rdfs:label       "FOODIE Ontology"@en ;
+        dc:source        "FOODIE application schema, Revision 4.3.2, derived according to ISO/DIS 19150-2 with several modification using ShapeChange."@en ;
+        owl:imports      <https://git.man.poznan.pl/stash/projects/FOOD/repos/model/browse/external/baseInspire.ttl?raw> , <http://www.opengis.net/ont/geosparql> , <https://git.man.poznan.pl/stash/projects/FOOD/repos/model/browse/external/iso19103.ttl?raw> ;
+        owl:versionInfo  "4.3.2" ;
+        rdfs:comment		 "FOODIE ontology extends INSPIRE data model for Agriculture and Aquaculture Facilities theme." ;
+        dc:date					 "2015-10-01" ;
+        dc:creator		   "Raul Palma" ;
+        dc:contributor	 "Tomas Reznik" ;
+        dc:contributor	 "Karek Charvat" ;
+        dc:contributor	 "Miguel Esbri" ;
+        dc:description	 "FOODIE ontology has been generated from FOODIE application schema (UML model), Revision 4.3.2, and translated into an ontology according to ISO/DIS 19150-2 with several modification using ShapeChange." .
+        
+foodie:zn  a            owl:ObjectProperty ;
+        rdfs:range      iso19103:Measure ;
+        skos:notation   "Zn"^^xsd:NCName ;
+        skos:prefLabel  "Zn"@en .
+
+foodie:interventionZone
+        a               owl:ObjectProperty ;
+        rdfs:range      foodie:ManagementZone ;
+        skos:notation   "interventionZone"^^xsd:NCName ;
+        skos:prefLabel  "interventionZone"@en .
+
+foodie:alertGeometry  a  owl:ObjectProperty ;
+        rdfs:range      geo:Geometry ;
+        skos:notation   "alertGeometry"^^xsd:NCName ;
+        skos:prefLabel  "alertGeometry"@en .
+
+foodie:safetyPeriod  a  owl:ObjectProperty ;
+        rdfs:range      iso19108:Period ;
+        skos:notation   "safetyPeriod"^^xsd:NCName ;
+        skos:prefLabel  "safetyPeriod"@en .
+
+foodie:alertPlot  a     owl:ObjectProperty ;
+        rdfs:range      foodie:Plot ;
+        owl:inverseOf   foodie:plotAlert ;
+        skos:notation   "alertPlot"^^xsd:NCName ;
+        skos:prefLabel  "alertPlot"@en .
+
+foodie:alertSpecies  a  owl:ObjectProperty ;
+        rdfs:range      foodie:CropSpecies ;
+        owl:inverseOf   foodie:speciesAlert ;
+        skos:notation   "alertSpecies"^^xsd:NCName ;
+        skos:prefLabel  "alertSpecies"@en .
+
+act-inspire:ActivityComplex  
+				a           owl:Class ;
+        rdfs:subClassOf  iso19109:AnyFeature , iso19150-2:FeatureType , geo:Feature ;
+        rdfs:subClassOf  [ a                owl:Restriction ;
+                           owl:minCardinality  "1"^^xsd:int ;
+                           owl:onProperty   		act-inspire:function
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:cardinality  	"1"^^xsd:int ;
+                           owl:onProperty      geo:hasGeometry
+                         ] ;
+        rdfs:subClassOf  [ a                owl:Restriction ;
+                           owl:cardinality  		"1"^^xsd:int ;
+                           owl:onProperty   		act-inspire:userId
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      prov:invalidatedAtTime
+                         ] ;
+        rdfs:subClassOf  [ a                owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:int ;
+                           owl:onProperty   prov:generatedAtTime
+                         ] ;
+        rdfs:subClassOf  [ a                owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:int ;
+                           owl:onProperty   common:validFrom
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      common:validTo
+                         ] ;
+        skos:notation    "ActivityComplex"^^xsd:NCName ;
+        skos:prefLabel   "ActivityComplex"@en .
+
+act-inspire:Function
+        a                owl:Class ;
+        rdfs:subClassOf  iso19150-2:Datatype ;
+        skos:notation    "Function"^^xsd:NCName ;
+        skos:prefLabel   "Function"@en .
+        
+act-inspire:EconomicActivityNACEValue
+        a                owl:Class ;
+        rdfs:subClassOf  skos:Concept , iso19150-2:Codelist ;
+        skos:notation    "EconomicActivityNACEValue"^^xsd:NCName ;
+        skos:prefLabel   "EconomicActivityNACEValue"@en .
+
+af-inspire:Holding  
+				a           owl:Class ;
+        rdfs:subClassOf  act-inspire:ActivityComplex, iso19109:AnyFeature , iso19150-2:FeatureType , geo:Feature ;
+        skos:notation    "Holding"^^xsd:NCName ;
+        skos:prefLabel   "Holding"@en .
+
+af-inspire:Site  a           owl:Class ;
+        rdfs:subClassOf  iso19109:AnyFeature , iso19150-2:FeatureType , geo:Feature ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:minCardinality  "1"^^xsd:int ;
+                           owl:onProperty      af-inspire:activity
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      prov:invalidatedAtTime
+                         ] ;
+        rdfs:subClassOf  [ a                owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:int ;
+                           owl:onProperty   prov:generatedAtTime
+                         ] ;
+        rdfs:subClassOf  [ a                owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:int ;
+                           owl:onProperty   foodie:code
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:cardinality  	"1"^^xsd:int ;
+                           owl:onProperty      geo:hasGeometry
+                         ] ;
+        rdfs:subClassOf  [ a                owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:int ;
+                           owl:onProperty   common:validFrom
+                         ] ;
+        rdfs:subClassOf  [ a                   owl:Restriction ;
+                           owl:maxCardinality  "1"^^xsd:int ;
+                           owl:onProperty      common:validTo
+                         ] ;
+        skos:notation    "Site"^^xsd:NCName ;
+        skos:prefLabel   "Site"@en .
+
+prov:generatedAtTime
+				a								owl:DatatypeProperty ;
+				rdfs:label 			"generatedAtTime" ;
+				rdfs:comment		"The time at which an entity was completely created and is available for use."@en ;
+				rdfs:range 			xsd:dateTime ;
+				rdfs:isDefinedBy	<http://www.w3.org/ns/prov-o#> .
+				
+prov:invalidatedAtTime
+				a								owl:DatatypeProperty ;
+				rdfs:label			"invalidatedAtTime" ;
+				rdfs:comment		"The time at which an entity was invalidated (i.e., no longer usable)."@en ;
+				rdfs:range			xsd:dateTime ;
+				rdfs:isDefinedBy	<http://www.w3.org/ns/prov-o#> .
+
+act-inspire:userId
+        a               owl:DatatypeProperty ;
+        rdfs:range      xsd:string ;
+        skos:notation   "userId"^^xsd:NCName ;
+        skos:prefLabel  "userId"@en .
+
+foodie:containsPlot
+        a               owl:ObjectProperty ;
+        rdfs:range      foodie:Plot ;
+        skos:notation   "containsPlot"^^xsd:NCName ;
+        skos:prefLabel  "containsPlot"@en .
+
+af-inspire:contains
+        a               owl:ObjectProperty ;
+        rdfs:range      af-inspire:Site ;
+        skos:notation   "contains"^^xsd:NCName ;
+        skos:prefLabel  "contains"@en .
+        
+af-inspire:activity
+        a               owl:ObjectProperty ;
+        rdfs:range      act-inspire:EconomicActivityNACEValue ;
+        skos:notation   "activity"^^xsd:NCName ;
+        skos:prefLabel  "activity"@en .
+        
+act-inspire:function
+        a               owl:ObjectProperty ;
+        rdfs:range      act-inspire:Function ;
+        skos:notation   "function"^^xsd:NCName ;
+        skos:prefLabel  "function"@en .
+
+act-inspire:thematicId
+        a               owl:ObjectProperty ;
+        rdfs:range      common:ThematicIdentifier ;
+        skos:notation   "thematicId"^^xsd:NCName ;
+        skos:prefLabel  "thematicId"@en .
+
+<http://inspire.ec.europa.eu/schemas/af/3.0/code/EconomicActivityNACEValue>
+        a               skos:ConceptScheme ;
+        dct:isFormatOf  "http://inspire.ec.europa.eu/schemas/af/3.0#EconomicActivityNACEValue" ;
+        skos:notation   "EconomicActivityNACEValue"^^xsd:NCName ;
+        skos:prefLabel  "EconomicActivityNACEValue"@en .

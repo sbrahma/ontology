@@ -1,0 +1,103 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+
+<http://w3id.org/foodie/corine>
+  a owl:Ontology ;
+  owl:versionIRI <https://raw.githubusercontent.com/FOODIE-cloud/ontology/master/corine.owl> ;
+  owl:versionInfo "0.0.2017-07-31" ;
+  dct:issued "2017-07-31T10:00:00Z"^^xsd:dateTime ;
+  dct:modified "2017-07-31T10:00:00Z"^^xsd:dateTime ;
+  rdfs:comment "Corine ontology derived from corine sql schema"@en ;
+  rdfs:label "Corine ontology"@en ;
+  dc:title "Corine ontology"@en ;
+  dc:source "Corine data model"@en ;
+  vann:preferredNamespacePrefix "corine" ;
+  vann:preferredNamespaceUri "http://w3id.org/foodie/corine#" ;
+  dc:creator "Raul Palma" ;
+  dct:creator <http://orcid.org/0000-0003-4289-4922> ;
+  dct:license <http://creativecommons.org/licenses/by/4.0/> ;
+  dc:rights "This ontology is distributed under Creative Commons Attribution 4.0 License - http://creativecommons.org/licenses/by/4.0"@en ;
+  owl:imports <http://www.opengis.net/ont/geosparql> .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+geo:hasGeometry
+  a owl:ObjectProperty ;
+  rdfs:isDefinedBy <http://www.opengis.net/ont/geosparql> .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+<http://w3id.org/foodie/corine#code>
+  a owl:DatatypeProperty ;
+  skos:notation "code"^^xsd:NCName ;
+  skos:prefLabel "code"@en ;
+  rdfs:range xsd:string ;
+  rdfs:isDefinedBy <http://w3id.org/foodie/corine> .
+
+<http://w3id.org/foodie/corine#id>
+  a owl:DatatypeProperty ;
+  skos:notation "id"^^xsd:NCName ;
+  skos:prefLabel "id"@en ;
+  rdfs:range xsd:string ;
+  rdfs:isDefinedBy <http://w3id.org/foodie/corine> .
+
+<http://w3id.org/foodie/corine#remark>
+  a owl:DatatypeProperty ;
+  skos:notation "remark"^^xsd:NCName ;
+  skos:prefLabel "remark"@en ;
+  rdfs:range xsd:string ;
+  rdfs:isDefinedBy <http://w3id.org/foodie/corine> .
+
+<http://w3id.org/foodie/corine#area>
+  a owl:DatatypeProperty ;
+  skos:notation "area"^^xsd:NCName ;
+  skos:prefLabel "area"@en ;
+  rdfs:range xsd:double ;
+  rdfs:isDefinedBy <http://w3id.org/foodie/corine> .
+
+<http://w3id.org/foodie/corine#shapeLength>
+  a owl:DatatypeProperty ;
+  skos:notation "shapeLength"^^xsd:NCName ;
+  skos:prefLabel "shapeLength"@en ;
+  rdfs:range xsd:double ;
+  rdfs:isDefinedBy <http://w3id.org/foodie/corine> .
+
+<http://w3id.org/foodie/corine#shapeArea>
+  a owl:DatatypeProperty ;
+  skos:notation "shapeArea"^^xsd:NCName ;
+  skos:prefLabel "shapeArea"@en ;
+  rdfs:range xsd:double ;
+  rdfs:isDefinedBy <http://w3id.org/foodie/corine> .
+
+<http://w3id.org/foodie/corine#hilucsLandUse>
+  a owl:DatatypeProperty ;
+  skos:notation "hilucsLandUse"^^xsd:NCName ;
+  skos:prefLabel "hilucsLandUse"@en ;
+  rdfs:range xsd:decimal ;
+  rdfs:isDefinedBy <http://inspire.ec.europa.eu/schemas/elu/4.0/> .
+  
+#################################################################
+#    Classes
+#################################################################
+
+<http://w3id.org/foodie/corine#CorineLandUse>
+  a owl:Class ;
+  rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty geo:hasGeometry ;
+    owl:cardinality "1"^^xsd:nonNegativeInteger
+  ] ;
+  skos:notation "CorineLandUse"^^xsd:NCName ;
+  skos:prefLabel "CorineLandUse"@en ;
+  rdfs:isDefinedBy <http://w3id.org/foodie/corine> .

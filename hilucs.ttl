@@ -1,0 +1,56 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<http://w3id.org/foodie/hilucs>
+  a owl:Ontology ;
+  owl:versionIRI <https://raw.githubusercontent.com/FOODIE-cloud/ontology/master/hilucs.owl> ;
+  owl:versionInfo "0.0.2017-07-31" ;
+  dct:issued "2017-07-31T10:00:00Z"^^xsd:dateTime ;
+  dct:modified "2017-07-31T10:00:00Z"^^xsd:dateTime ;
+  rdfs:comment "HILUCS land use classification"@en ;
+  rdfs:label "HILUCS classification ontology"@en ;
+  dc:title "HILUCS classification ontology"@en ;
+  dc:source "HILUCS classification model"@en ;
+  vann:preferredNamespacePrefix "hilucs" ;
+  vann:preferredNamespaceUri "http://w3id.org/foodie/hilucs#" ;
+  dc:creator "Raul Palma" ;
+  dct:creator <http://orcid.org/0000-0003-4289-4922> ;
+  dct:license <http://creativecommons.org/licenses/by/4.0/> ;
+  dc:rights "This ontology is distributed under Creative Commons Attribution 4.0 License - http://creativecommons.org/licenses/by/4.0"@en .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+<http://w3id.org/foodie/hilucs#url>
+  a owl:ObjectProperty ;
+  skos:notation "url"^^xsd:NCName ;
+  skos:prefLabel "url"@en ;
+  rdfs:range <http://www.w3.org/2008/05/skos#Concept> ;
+  rdfs:isDefinedBy <http://w3id.org/foodie/hilucs> .
+
+#################################################################
+#    Data properties
+#################################################################
+
+<http://w3id.org/foodie/hilucs#hilucsLandUse>
+  a owl:DatatypeProperty ;
+  skos:notation "hilucsLandUse"^^xsd:NCName ;
+  skos:prefLabel "hilucsLandUse"@en ;
+  rdfs:range xsd:decimal ;
+  rdfs:isDefinedBy <http://inspire.ec.europa.eu/schemas/elu/4.0/> .
+
+#################################################################
+#    Classes
+#################################################################
+
+<http://w3id.org/foodie/hilucs#Hilucs>
+  a owl:Class ;
+  skos:notation "Hilucs"^^xsd:NCName ;
+  skos:prefLabel "Hilucs"@en ;
+  rdfs:isDefinedBy <http://w3id.org/foodie/hilucs> .

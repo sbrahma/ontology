@@ -1,0 +1,260 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix iso19103: <http://def.seegrid.csiro.au/isotc211/iso19103/2005/basic#> .
+@prefix iso19109: <http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#> .
+@prefix iso19150-2: <http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#> .
+@prefix common: <http://portele.de/ont/inspire/baseInspire#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+
+<http://w3id.org/foodie/otm>
+  a owl:Ontology ;
+  owl:versionIRI <https://raw.githubusercontent.com/FOODIE-cloud/ontology/master/otm.ttl> ;
+  owl:versionInfo "0.0.2017-08-08" ;
+  dct:issued "2017-08-07T10:00:00Z"^^xsd:dateTime ;
+  dct:modified "2017-08-07T10:00:00Z"^^xsd:dateTime ;
+  rdfs:comment """OTM ontology has been generated from Open Transport Map data model, translated into ontology according to ISO/DIS 19150-2. This ontology version does not define codelists"""@en ;
+  rdfs:label "Open Transport Map ontology"@en ;
+  dc:title "Open Transport Map ontology"@en ;
+  dc:source "Open Transport Map data model"@en ;
+  vann:preferredNamespacePrefix "otm" ;
+  vann:preferredNamespaceUri "http://w3id.org/foodie/otm#" ;
+  dc:creator "Raul Palma" ;
+  dct:creator <http://orcid.org/0000-0003-4289-4922> ;
+  dct:license <http://creativecommons.org/licenses/by/4.0/> ;
+  dc:rights "This ontology is distributed under Creative Commons Attribution 4.0 License - http://creativecommons.org/licenses/by/4.0"@en ;
+  owl:imports <http://www.opengis.net/ont/geosparql>, <https://git.man.poznan.pl/stash/projects/FOOD/repos/model/browse/external/baseInspire.ttl?raw>, <https://git.man.poznan.pl/stash/projects/FOOD/repos/model/browse/external/iso19103.ttl?raw> .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+geo:hasGeometry
+  a owl:ObjectProperty ;
+  rdfs:isDefinedBy <http://www.opengis.net/ont/geosparql> .
+
+<http://w3id.org/foodie/otm#centerLineGeometry>
+  a owl:ObjectProperty ;
+  skos:notation "centerLineGeometry"^^xsd:NCName ;
+  skos:prefLabel "centerLineGeometry"@en ;
+  rdfs:range geo:Geometry ;
+  rdfs:isDefinedBy <http://w3id.org/foodie/otm> .
+
+<http://w3id.org/foodie/otm#fromRoadNode>
+  a owl:ObjectProperty ;
+  skos:notation "fromRoadNode"^^xsd:NCName ;
+  skos:prefLabel "fromRoadNode"@en ;
+  rdfs:range <http://w3id.org/foodie/otm#RoadNode> ;
+  rdfs:isDefinedBy <http://w3id.org/foodie/otm> .
+
+<http://w3id.org/foodie/otm#toRoadNode>
+  a owl:ObjectProperty ;
+  skos:notation "toRoadNode"^^xsd:NCName ;
+  skos:prefLabel "toRoadNode"@en ;
+  rdfs:range <http://w3id.org/foodie/otm#RoadNode> ;
+  rdfs:isDefinedBy <http://w3id.org/foodie/otm> .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+
+<http://w3id.org/foodie/otm#sourceId> #Not in model
+  a owl:DatatypeProperty ;
+  skos:notation "sourceId"^^xsd:NCName ;
+  skos:prefLabel "sourceId"@en ;
+  rdfs:range xsd:decimal ;
+  rdfs:isDefinedBy <http://w3id.org/foodie/otm> .
+
+prov:generatedAtTime
+  a owl:DatatypeProperty ;
+  rdfs:label "generatedAtTime" ;
+  rdfs:comment "The time at which an entity was completely created and is available for use."@en ;
+  rdfs:range xsd:dateTime ;
+  rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> .
+
+prov:invalidatedAtTime
+  a owl:DatatypeProperty ;
+  rdfs:label "invalidatedAtTime" ;
+  rdfs:comment "The time at which an entity was invalidated (i.e., no longer usable)."@en ;
+  rdfs:range xsd:dateTime ;
+  rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> .
+
+<http://w3id.org/foodie/otm#fictitious>
+  a owl:DatatypeProperty ;
+  skos:notation "fictitious"^^xsd:NCName ;
+  skos:prefLabel "fictitious"@en ;
+  rdfs:range xsd:boolean ;
+  rdfs:isDefinedBy <http://w3id.org/foodie/otm> .
+
+<http://w3id.org/foodie/otm#direction>
+  a owl:DatatypeProperty ;
+  skos:notation "direction"^^xsd:NCName ;
+  skos:prefLabel "direction"@en ;
+  rdfs:range xsd:string ;
+  rdfs:isDefinedBy <http://w3id.org/foodie/otm> .
+
+<http://w3id.org/foodie/otm#roadName>
+  a owl:DatatypeProperty ;
+  skos:notation "roadName"^^xsd:NCName ;
+  skos:prefLabel "roadName"@en ;
+  rdfs:range xsd:string ;
+  rdfs:isDefinedBy <http://w3id.org/foodie/otm> .
+
+<http://w3id.org/foodie/otm#nationalRoadCode>
+  a owl:DatatypeProperty ;
+  skos:notation "nationalRoadCode"^^xsd:NCName ;
+  skos:prefLabel "nationalRoadCode"@en ;
+  rdfs:range xsd:string ;
+  rdfs:isDefinedBy <http://w3id.org/foodie/otm> .
+  
+<http://w3id.org/foodie/otm#functionalRoadClass>
+  a owl:DatatypeProperty ;
+  skos:notation "functionalRoadClass"^^xsd:NCName ;
+  skos:prefLabel "functionalRoadClass"@en ;
+  rdfs:range xsd:string ;
+  rdfs:isDefinedBy <http://w3id.org/foodie/otm> .
+
+<http://w3id.org/foodie/otm#formOfWay>
+  a owl:DatatypeProperty ;
+  skos:notation "formOfWay"^^xsd:NCName ;
+  skos:prefLabel "formOfWay"@en ;
+  rdfs:range xsd:string ;
+  rdfs:isDefinedBy <http://w3id.org/foodie/otm> .
+
+<http://w3id.org/foodie/otm#roadSurfaceCategory>
+  a owl:DatatypeProperty ;
+  skos:notation "roadSurfaceCategory"^^xsd:NCName ;
+  skos:prefLabel "roadSurfaceCategory"@en ;
+  rdfs:range xsd:string ;
+  rdfs:isDefinedBy <http://w3id.org/foodie/otm> .
+
+<http://w3id.org/foodie/otm#speedLimit>
+  a owl:DatatypeProperty ;
+  skos:notation "speedLimit"^^xsd:NCName ;
+  skos:prefLabel "speedLimit"@en ;
+  rdfs:range xsd:decimal ;
+  rdfs:isDefinedBy <http://w3id.org/foodie/otm> .
+
+<http://w3id.org/foodie/otm#capacity>
+  a owl:DatatypeProperty ;
+  skos:notation "capacity"^^xsd:NCName ;
+  skos:prefLabel "capacity"@en ;
+  rdfs:range xsd:decimal ;
+  rdfs:isDefinedBy <http://w3id.org/foodie/otm> .
+
+<http://w3id.org/foodie/otm#maximumHeight>
+  a owl:DatatypeProperty ;
+  skos:notation "maximumHeight"^^xsd:NCName ;
+  skos:prefLabel "maximumHeight"@en ;
+  rdfs:range xsd:double ;
+  rdfs:isDefinedBy <http://w3id.org/foodie/otm> .
+
+<http://w3id.org/foodie/otm#maximumTotalWeight>
+  a owl:DatatypeProperty ;
+  skos:notation "maximumTotalWeight"^^xsd:NCName ;
+  skos:prefLabel "maximumTotalWeight"@en ;
+  rdfs:range xsd:double ;
+  rdfs:isDefinedBy <http://w3id.org/foodie/otm> .
+
+<http://w3id.org/foodie/otm#maximumWidth>
+  a owl:DatatypeProperty ;
+  skos:notation "maximumWidth"^^xsd:NCName ;
+  skos:prefLabel "maximumWidth"@en ;
+  rdfs:range xsd:double ;
+  rdfs:isDefinedBy <http://w3id.org/foodie/otm> .
+
+<http://w3id.org/foodie/otm#vehicleType>
+  a owl:DatatypeProperty ;
+  skos:notation "vehicleType"^^xsd:NCName ;
+  skos:prefLabel "vehicleType"@en ;
+  rdfs:range xsd:string ;
+  rdfs:isDefinedBy <http://w3id.org/foodie/otm> .
+
+<http://w3id.org/foodie/otm#zOrder> #Not in model
+  a owl:DatatypeProperty ;
+  skos:notation "zOrder"^^xsd:NCName ;
+  skos:prefLabel "zOrder"@en ;
+  rdfs:range xsd:decimal ;
+  rdfs:isDefinedBy <http://w3id.org/foodie/otm> .
+
+<http://w3id.org/foodie/otm#lengthM> #Not in model
+  a owl:DatatypeProperty ;
+  skos:notation "lengthM"^^xsd:NCName ;
+  skos:prefLabel "lengthM"@en ;
+  rdfs:range xsd:double ;
+  rdfs:isDefinedBy <http://w3id.org/foodie/otm> .
+
+<http://w3id.org/foodie/otm#trafficVolumeForAverageDay> #Not in model
+  a owl:DatatypeProperty ;
+  skos:notation "trafficVolumeForAverageDay"^^xsd:NCName ;
+  skos:prefLabel "trafficVolumeForAverageDay"@en ;
+  rdfs:range xsd:double ;
+  rdfs:isDefinedBy <http://w3id.org/foodie/otm> .
+
+<http://w3id.org/foodie/otm#geographicalName>
+  a owl:DatatypeProperty ;
+  skos:notation "geographicalName"^^xsd:NCName ;
+  skos:prefLabel "geographicalName"@en ;
+  rdfs:range xsd:string ;
+  rdfs:isDefinedBy <http://w3id.org/foodie/otm> .
+
+<http://w3id.org/foodie/otm#formOfRoadNode>
+  a owl:DatatypeProperty ;
+  skos:notation "formOfRoadNode"^^xsd:NCName ;
+  skos:prefLabel "formOfRoadNode"@en ;
+  rdfs:range xsd:string ;
+  rdfs:isDefinedBy <http://w3id.org/foodie/otm> .
+
+<http://w3id.org/foodie/otm#country>
+  a owl:DatatypeProperty ;
+  skos:notation "country"^^xsd:NCName ;
+  skos:prefLabel "country"@en ;
+  rdfs:range xsd:string ;
+  rdfs:isDefinedBy <http://w3id.org/foodie/otm> .
+
+<http://w3id.org/foodie/otm#area>
+  a owl:DatatypeProperty ;
+  skos:notation "area"^^xsd:NCName ;
+  skos:prefLabel "area"@en ;
+  rdfs:range xsd:string ;
+  rdfs:isDefinedBy <http://w3id.org/foodie/otm> .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+
+<http://w3id.org/foodie/otm#RoadLink>
+  a owl:Class ;
+  rdfs:subClassOf iso19109:AnyFeature, iso19150-2:FeatureType, geo:Feature ;
+  rdfs:subClassOf  [ a                owl:Restriction ;
+                     owl:cardinality  "1"^^xsd:int ;
+                     owl:onProperty   <http://w3id.org/foodie/otm#fromRoadNode>
+                   ] ;
+  rdfs:subClassOf  [ a                owl:Restriction ;
+                     owl:cardinality  "1"^^xsd:int ;
+                     owl:onProperty   <http://w3id.org/foodie/otm#toRoadNode>
+                   ] ;
+  skos:notation "RoadLink"^^xsd:NCName ;
+  skos:prefLabel "RoadLink"@en ;
+  rdfs:isDefinedBy <http://w3id.org/foodie/otm> .
+
+<http://w3id.org/foodie/otm#RoadNode>
+  a owl:Class ;
+  rdfs:subClassOf iso19109:AnyFeature, iso19150-2:FeatureType, geo:Feature ;
+  skos:notation "RoadNode"^^xsd:NCName ;
+  skos:prefLabel "RoadNode"@en ;
+  rdfs:isDefinedBy <http://w3id.org/foodie/otm> .
+
+
+iso19109:AnyFeature a owl:Class .
+iso19150-2:FeatureType a owl:Class .

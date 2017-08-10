@@ -1,0 +1,135 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix iso19103: <http://def.seegrid.csiro.au/isotc211/iso19103/2005/basic#> .
+@prefix iso19109: <http://def.seegrid.csiro.au/isotc211/iso19109/2005/feature#> .
+@prefix iso19150-2: <http://def.seegrid.csiro.au/isotc211/iso19150/-2/2012/basic#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+
+<http://w3id.org/foodie/olu>
+  a owl:Ontology ;
+  owl:versionIRI <https://raw.githubusercontent.com/FOODIE-cloud/ontology/master/olu.owl> ;
+  owl:versionInfo "0.0.2017-07-31" ;
+  dct:issued "2017-07-31T10:00:00Z"^^xsd:dateTime ;
+  dct:modified "2017-07-31T10:00:00Z"^^xsd:dateTime ;
+  rdfs:comment """OLU ontology has been generated from Open Land Use data model, translated into ontology according to ISO/DIS 19150-2.
+        """@en ;
+  rdfs:label "Open Land Use ontology"@en ;
+  dc:title "Open Land Use ontology"@en ;
+  dc:source "Open Land Use data model"@en ;
+  vann:preferredNamespacePrefix "olu" ;
+  vann:preferredNamespaceUri "http://w3id.org/foodie/olu#" ;
+  dc:creator "Raul Palma" ;
+  dct:creator <http://orcid.org/0000-0003-4289-4922> ;
+  dct:license <http://creativecommons.org/licenses/by/4.0/> ;
+  dc:rights "This ontology is distributed under Creative Commons Attribution 4.0 License - http://creativecommons.org/licenses/by/4.0"@en ;
+  owl:imports <http://www.opengis.net/ont/geosparql>, <https://git.man.poznan.pl/stash/projects/FOOD/repos/model/browse/external/baseInspire.ttl?raw>, <https://git.man.poznan.pl/stash/projects/FOOD/repos/model/browse/external/iso19103.ttl?raw> .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+geo:hasGeometry
+  a owl:ObjectProperty ;
+  rdfs:isDefinedBy <http://www.opengis.net/ont/geosparql> .
+
+<http://w3id.org/foodie/olu#geometrySource>
+  a owl:ObjectProperty ;
+  skos:notation "geometrySource"^^xsd:NCName ;
+  skos:prefLabel "geometrySource"@en ;
+  rdfs:range <http://www.w3.org/2008/05/skos#Concept> ;
+  rdfs:isDefinedBy <http://w3id.org/foodie/olu> .
+
+<http://w3id.org/foodie/olu#attributeSource>
+  a owl:ObjectProperty ;
+  skos:notation "attributeSource"^^xsd:NCName ;
+  skos:prefLabel "attributeSource"@en ;
+  rdfs:range <http://www.w3.org/2008/05/skos#Concept> ;
+  rdfs:isDefinedBy <http://w3id.org/foodie/olu> .
+
+#################################################################
+#    Data properties
+#################################################################
+
+prov:generatedAtTime
+  a owl:DatatypeProperty ;
+  rdfs:label "generatedAtTime" ;
+  rdfs:comment "The time at which an entity was completely created and is available for use."@en ;
+  rdfs:range xsd:dateTime ;
+  rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> .
+
+prov:invalidatedAtTime
+  a owl:DatatypeProperty ;
+  rdfs:label "invalidatedAtTime" ;
+  rdfs:comment "The time at which an entity was invalidated (i.e., no longer usable)."@en ;
+  rdfs:range xsd:dateTime ;
+  rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> .
+
+<http://w3id.org/foodie/olu#hilucsLandUse>
+  a owl:DatatypeProperty ;
+  skos:notation "hilucsLandUse"^^xsd:NCName ;
+  skos:prefLabel "hilucsLandUse"@en ;
+  rdfs:range xsd:decimal ;
+  rdfs:isDefinedBy <http://inspire.ec.europa.eu/schemas/elu/4.0/> .
+
+<http://w3id.org/foodie/olu#specificLandUse>
+  a owl:DatatypeProperty ;
+  skos:notation "specificLandUse"^^xsd:NCName ;
+  skos:prefLabel "specificLandUse"@en ;
+  rdfs:range xsd:string ;
+  rdfs:isDefinedBy <http://inspire.ec.europa.eu/schemas/elu/4.0/> .
+
+<http://w3id.org/foodie/olu#countryCode>
+  a owl:DatatypeProperty ;
+  skos:notation "countryCode"^^xsd:NCName ;
+  skos:prefLabel "countryCode"@en ;
+  rdfs:range xsd:string ;
+  rdfs:isDefinedBy <http://w3id.org/foodie/olu> .
+
+<http://w3id.org/foodie/olu#municipalCode>
+  a owl:DatatypeProperty ;
+  skos:notation "municipalCode"^^xsd:NCName ;
+  skos:prefLabel "municipalCode"@en ;
+  rdfs:range xsd:string ;
+  rdfs:isDefinedBy <http://w3id.org/foodie/olu> .
+
+#################################################################
+#    Classes
+#################################################################
+
+
+<http://w3id.org/foodie/olu#LandUse>
+  a owl:Class ;
+  rdfs:subClassOf iso19109:AnyFeature, iso19150-2:FeatureType, geo:Feature, [
+    a owl:Restriction ;
+    owl:onProperty prov:generatedAtTime ;
+    owl:cardinality "1"^^xsd:nonNegativeInteger
+  ], [
+    a owl:Restriction ;
+    owl:onProperty prov:invalidatedAtTime ;
+    owl:maxCardinality "1"^^xsd:nonNegativeInteger
+  ], [
+    a owl:Restriction ;
+    owl:onProperty geo:hasGeometry ;
+    owl:cardinality "1"^^xsd:nonNegativeInteger
+  ], [
+    a owl:Restriction ;
+    owl:onProperty <http://w3id.org/foodie/olu#hilucsLandUse> ;
+    owl:minCardinality "1"^^xsd:nonNegativeInteger
+  ], [
+    a owl:Restriction ;
+    owl:onProperty <http://w3id.org/foodie/olu#specificLandUse> ;
+    owl:minCardinality "1"^^xsd:nonNegativeInteger
+  ] ;
+  skos:notation "LandUse"^^xsd:NCName ;
+  skos:prefLabel "LandUse"@en ;
+  rdfs:isDefinedBy <http://w3id.org/foodie/olu> .
+
+iso19109:AnyFeature a owl:Class .
+iso19150-2:FeatureType a owl:Class .

@@ -1,0 +1,109 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+
+<http://w3id.org/foodie/atlas>
+  a owl:Ontology ;
+  owl:versionIRI <https://raw.githubusercontent.com/FOODIE-cloud/ontology/master/urban-atlas.owl> ;
+  owl:versionInfo "0.0.2017-07-31" ;
+  dct:issued "2017-07-31T10:00:00Z"^^xsd:dateTime ;
+  dct:modified "2017-07-31T10:00:00Z"^^xsd:dateTime ;
+  rdfs:comment "Urban Atlas ontology derived from urban atlas sql schema"@en ;
+  rdfs:label "Urban Atlas ontology"@en ;
+  dc:title "Urban Atlas ontology"@en ;
+  dc:source "Urban Atlas model"@en ;
+  vann:preferredNamespacePrefix "atlas" ;
+  vann:preferredNamespaceUri "http://w3id.org/foodie/atlas#" ;
+  dc:creator "Raul Palma" ;
+  dct:creator <http://orcid.org/0000-0003-4289-4922> ;
+  dct:license <http://creativecommons.org/licenses/by/4.0/> ;
+  dc:rights "This ontology is distributed under Creative Commons Attribution 4.0 License - http://creativecommons.org/licenses/by/4.0"@en ;
+  owl:imports <http://www.opengis.net/ont/geosparql> .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+geo:hasGeometry
+  a owl:ObjectProperty ;
+  rdfs:isDefinedBy <http://www.opengis.net/ont/geosparql> .
+
+#################################################################
+#    Data properties
+#################################################################
+
+<http://w3id.org/foodie/atlas#cities>
+  a owl:DatatypeProperty ;
+  skos:notation "cities"^^xsd:NCName ;
+  skos:prefLabel "cities"@en ;
+  rdfs:range xsd:string ;
+  rdfs:isDefinedBy <http://w3id.org/foodie/atlas> .
+
+<http://w3id.org/foodie/atlas#luzOrCit>
+  a owl:DatatypeProperty ;
+  skos:notation "luzOrCit"^^xsd:NCName ;
+  skos:prefLabel "luzOrCit"@en ;
+  rdfs:range xsd:string ;
+  rdfs:isDefinedBy <http://w3id.org/foodie/atlas> .
+
+<http://w3id.org/foodie/atlas#code>
+  a owl:DatatypeProperty ;
+  skos:notation "code"^^xsd:NCName ;
+  skos:prefLabel "code"@en ;
+  rdfs:range xsd:string ;
+  rdfs:isDefinedBy <http://w3id.org/foodie/atlas> .
+
+<http://w3id.org/foodie/atlas#item>
+  a owl:DatatypeProperty ;
+  skos:notation "item"^^xsd:NCName ;
+  skos:prefLabel "item"@en ;
+  rdfs:range xsd:string ;
+  rdfs:isDefinedBy <http://w3id.org/foodie/atlas> .
+
+<http://w3id.org/foodie/atlas#prodDate>
+  a owl:DatatypeProperty ;
+  skos:notation "prodDate"^^xsd:NCName ;
+  skos:prefLabel "prodDate"@en ;
+  rdfs:range xsd:string ;
+  rdfs:isDefinedBy <http://w3id.org/foodie/atlas> .
+
+<http://w3id.org/foodie/atlas#shapeLength>
+  a owl:DatatypeProperty ;
+  skos:notation "shapeLength"^^xsd:NCName ;
+  skos:prefLabel "shapeLength"@en ;
+  rdfs:range xsd:double ;
+  rdfs:isDefinedBy <http://w3id.org/foodie/atlas> .
+
+<http://w3id.org/foodie/atlas#shapeArea>
+  a owl:DatatypeProperty ;
+  skos:notation "shapeArea"^^xsd:NCName ;
+  skos:prefLabel "shapeArea"@en ;
+  rdfs:range xsd:double ;
+  rdfs:isDefinedBy <http://w3id.org/foodie/atlas> .
+
+<http://w3id.org/foodie/atlas#hilucsLandUse>
+  a owl:DatatypeProperty ;
+  skos:notation "hilucsLandUse"^^xsd:NCName ;
+  skos:prefLabel "hilucsLandUse"@en ;
+  rdfs:range xsd:decimal ;
+  rdfs:isDefinedBy <http://inspire.ec.europa.eu/schemas/elu/4.0/> .
+
+#################################################################
+#    Classes
+#################################################################
+
+<http://w3id.org/foodie/atlas#UrbanAtlasLandUse>
+  a owl:Class ;
+  rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty geo:hasGeometry ;
+    owl:cardinality "1"^^xsd:nonNegativeInteger
+  ] ;
+  skos:notation "UrbanAtlasLandUse"^^xsd:NCName ;
+  skos:prefLabel "UrbanAtlasLandUse"@en ;
+  rdfs:isDefinedBy <http://w3id.org/foodie/atlas> .
