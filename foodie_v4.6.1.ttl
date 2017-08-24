@@ -21,18 +21,17 @@
         rdfs:label       "FOODIE Ontology"@en ;
         dc:source        "FOODIE application schema, Revision 4.6.1, derived according to ISO/DIS 19150-2 with several modification using ShapeChange."@en ;
         owl:imports      <https://git.man.poznan.pl/stash/projects/FOOD/repos/model/browse/external/baseInspire.ttl?raw> , <http://www.opengis.net/ont/geosparql> , <https://git.man.poznan.pl/stash/projects/FOOD/repos/model/browse/external/iso19103.ttl?raw> ;
-        owl:versionInfo  "4.6.2" ;
+        owl:versionInfo  "4.6.1" ;
         rdfs:comment		 "FOODIE ontology extends INSPIRE data model for Agriculture and Aquaculture Facilities theme." ;
         dct:issued       "2017-08-10T10:00:00Z"^^xsd:dateTime ;
-        dct:modified     "2017-08-24T10:00:00Z"^^xsd:dateTime ;
+        dct:modified     "2017-08-10T10:00:00Z"^^xsd:dateTime ;
         dc:creator		   "Raul Palma" ;
         dct:creator 		 <http://orcid.org/0000-0003-4289-4922> ;
         dc:contributor	 "Tomas Reznik" ;
         dc:contributor	 "Karek Charvat" ;
         dc:contributor	 "Miguel Esbri" ;
         dc:contributor	 "Soumya Brahma" ;
-        dc:description	 "FOODIE ontology has been generated from FOODIE application schema (UML model), Revision 4.6.1, and translated into an ontology according to ISO/DIS 19150-2 using ShapeChange plus several pre and post processing changes. This is a revision of v4.3.2, manually updated to v4.6.1." ;
-        dc:description	 "This release fixes model 4.6.2 regarding DoseUnit that cannot be a codelist, and is defined as datatype" ;
+        dc:description	 "FOODIE ontology has been generated from FOODIE application schema (UML model), Revision 4.6.1, and translated into an ontology according to ISO/DIS 19150-2 using ShapeChange plus several pre and post processing changes. This is a revision of v4.3.2, manually updated to v4.6.1" ;
         dct:license 		 <http://creativecommons.org/licenses/by/4.0/> ;
   			dc:rights 			 "This ontology is distributed under Creative Commons Attribution 4.0 License - http://creativecommons.org/licenses/by/4.0"@en .
   			
@@ -230,14 +229,6 @@ foodie:productTreatment
         rdfs:range      foodie:Treatment ;
         owl:inverseOf   foodie:treatmentProduct ;
         skos:prefLabel  "productTreatment"@en .
-foodie:minimumDose
-				a               owl:ObjectProperty ;
-        rdfs:range      iso19103:Measure ;
-        skos:prefLabel  "minimumDose"@en .
-foodie:maximumDose
-				a               owl:ObjectProperty ;
-        rdfs:range      iso19103:Measure ;
-        skos:prefLabel  "maximumDose"@en .
 foodie:flowAdjustment
         a               owl:ObjectProperty ;
         rdfs:range      iso19103:Measure ;
@@ -528,15 +519,7 @@ foodie:OriginTypeValue
         rdfs:subClassOf  skos:Concept , iso19150-2:Codelist ;
         skos:prefLabel   "OriginTypeValue"@en .
 foodie:DoseUnit  a       owl:Class ;
-        rdfs:subClassOf  iso19150-2:Datatype ;
-        rdfs:subClassOf  [ a                   owl:Restriction ;
-                           owl:maxCardinality  "1"^^xsd:int ;
-                           owl:onProperty      foodie:minimumDose
-                         ] ;
-        rdfs:subClassOf  [ a                   owl:Restriction ;
-                           owl:maxCardinality  "1"^^xsd:int ;
-                           owl:onProperty      foodie:maximumDose
-                         ] ;
+        rdfs:subClassOf  skos:Concept , iso19150-2:Codelist ;
         skos:prefLabel   "DoseUnit"@en .
 foodie:ActiveIngredients
         a                owl:Class ;
@@ -1106,6 +1089,10 @@ foodie:CampaignType  a           owl:Class ;
 
 
 
+<http://foodie-cloud.com/model/foodie/code/DoseUnit>
+        a               skos:ConceptScheme ;
+        dct:isFormatOf  "http://foodie-cloud.com/model/foodie#DoseUnit" ;
+        skos:prefLabel  "DoseUnit"@en .
 <http://foodie-cloud.com/model/foodie/code/FormOfTreatmentValue/manual>
         a               skos:Concept ;
         skos:inScheme   "http://foodie-cloud.com/model/foodie/code/FormOfTreatmentValue" ;
@@ -1166,6 +1153,10 @@ foodie:CampaignType  a           owl:Class ;
         a               skos:Concept ;
         skos:inScheme   "http://foodie-cloud.com/model/foodie/code/TreatmentPurposeValue" ;
         skos:prefLabel  "disease"@en .
+<http://foodie-cloud.com/model/foodie/code/DoseUnit/minimumDose>
+        a               skos:Concept ;
+        skos:inScheme   "http://foodie-cloud.com/model/foodie/code/DoseUnit" ;
+        skos:prefLabel  "minimumDose"@en .
 <http://foodie-cloud.com/model/foodie/code/OriginTypeValue>
         a               skos:ConceptScheme ;
         dct:isFormatOf  "http://foodie-cloud.com/model/foodie#OriginTypeValue" ;
@@ -1178,6 +1169,10 @@ foodie:CampaignType  a           owl:Class ;
         a               skos:Concept ;
         skos:inScheme   "http://foodie-cloud.com/model/foodie/code/ProductKindValue" ;
         skos:prefLabel  "mineral"@en .
+<http://foodie-cloud.com/model/foodie/code/DoseUnit/maximumDose>
+        a               skos:Concept ;
+        skos:inScheme   "http://foodie-cloud.com/model/foodie/code/DoseUnit" ;
+        skos:prefLabel  "maximumDose"@en .
 <http://foodie-cloud.com/model/foodie/code/TreatmentPurposeValue>
         a               skos:ConceptScheme ;
         dct:isFormatOf  "http://foodie-cloud.com/model/foodie#TreatmentPurposeValue" ;
