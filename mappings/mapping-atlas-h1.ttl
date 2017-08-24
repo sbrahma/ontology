@@ -10,6 +10,7 @@
 @prefix geo: <http://www.opengis.net/ont/geosparql#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix atlas: <http://w3id.org/foodie/atlas#> .
+@prefix virtrdf: <http://www.openlinksw.com/schemas/virtrdf#> .
 
 
 map:database a d2rq:Database;
@@ -30,7 +31,7 @@ map:urban_atlas_h1_geometry_asWKT a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:urban_atlas_h1_geometry;
 	d2rq:property geo:asWKT;
 	d2rq:column "urban_atlas_h1.geom";
-	d2rq:datatype geo:wktLiteral;
+	d2rq:datatype virtrdf:Geometry;
 	.
 
 

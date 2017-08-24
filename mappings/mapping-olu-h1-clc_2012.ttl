@@ -9,6 +9,7 @@
 @prefix olu: <http://w3id.org/foodie/olu#> .
 @prefix geo: <http://www.opengis.net/ont/geosparql#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix virtrdf: <http://www.openlinksw.com/schemas/virtrdf#> .
 
 map:database a d2rq:Database;
 	d2rq:jdbcDriver "org.postgresql.Driver";
@@ -28,7 +29,7 @@ map:areas_master_h1_cz_clc_2012_geometry_asWKT a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:areas_master_h1_cz_clc_2012_geometry;
 	d2rq:property geo:asWKT;
 	d2rq:column "areas_master_h1_cz_clc_2012.geom";
-	d2rq:datatype geo:wktLiteral;
+	d2rq:datatype virtrdf:Geometry;
 	.
 
 

@@ -186,12 +186,12 @@ map:roadlink_view_z_order a d2rq:PropertyBridge;
 	d2rq:column "roadlink_view.z_order";
 	d2rq:datatype xsd:decimal;
 	.
-map:roadlink_view_length_m a d2rq:PropertyBridge;
-	d2rq:belongsToClassMap map:roadlink_view;
-	d2rq:property otm:lengthM;
-	d2rq:column "roadlink_view.length_m";
-	d2rq:datatype xsd:double;
-	.
+#map:roadlink_view_length_m a d2rq:PropertyBridge;
+#	d2rq:belongsToClassMap map:roadlink_view;
+#	d2rq:property otm:lengthM;
+#	d2rq:column "roadlink_view.length_m";
+#	d2rq:datatype xsd:double;
+#	.
 map:roadlink_view_trafficvolumeforaverageday a d2rq:PropertyBridge;
 	d2rq:belongsToClassMap map:roadlink_view;
 	d2rq:property otm:trafficVolumeForAverageDay;
